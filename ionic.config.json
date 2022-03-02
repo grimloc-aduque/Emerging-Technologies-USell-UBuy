@@ -1,0 +1,7 @@
+{
+  "name": "USell-UBuy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
