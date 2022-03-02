@@ -24,3 +24,42 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// Paleta de colores
+
+:root{
+    --blue: #72C4E8;
+    --red: #EC5353;
+    --green: #42C686;
+    --yellow: #F3CC60;
+}
+
+.color-blue{
+    color: var(--blue);
+}
+.bg-blue{
+    background-color: var(--blue);
+}
+
+.color-red{
+    color: var(--red)
+}
+.bg-red{
+    background-color: var(--red);
+}
+
+.color-green{
+    color: var(--green);
+}
+.bg-green{
+    background-color: var(--green);
+}
+
+.color-yellow{
+    color: var(--yellow);
+}
+.bg-yellow{
+    background-color: var(--yellow);
+}
+
+
