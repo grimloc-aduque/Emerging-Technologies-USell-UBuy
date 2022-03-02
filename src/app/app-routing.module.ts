@@ -46,6 +46,14 @@ const routes: Routes = [
   },  {
     path: 'perfil-publico',
     loadChildren: () => import('./pages/perfil-publico/perfil-publico.module').then( m => m.PerfilPublicoPageModule)
+  },
+  {
+    path: 'dejar-review',
+    loadChildren: () => import('./pages/dejar-review/dejar-review.module').then( m => m.DejarReviewPageModule)
+  },
+  {
+    path: 'perfil-reserva',
+    loadChildren: () => import('./pages/perfil-reserva/perfil-reserva.module').then( m => m.PerfilReservaPageModule)
   }
 
 ];
