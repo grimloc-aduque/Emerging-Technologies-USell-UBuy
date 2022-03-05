@@ -36,31 +36,31 @@
 
 //color azul - prueba git
 .color-blue{
-    color: var(--blue);
+    color: var(--blue) !important;
 }
 .bg-blue{
-    background-color: var(--blue);
+    background-color: var(--blue) !important;
 }
 
 .color-red{
-    color: var(--red)
+    color: var(--red) !important;
 }
 .bg-red{
-    background-color: var(--red);
+    background-color: var(--red) !important;
 }
 
 .color-green{
     color: var(--green);
 }
 .bg-green{
-    background-color: var(--green);
+    background-color: var(--green) !important;
 }
 
 .color-yellow{
-    color: var(--yellow);
+    color: var(--yellow) !important;
 }
 .bg-yellow{
-    background-color: var(--yellow);
+    background-color: var(--yellow) !important;
 }
 
 

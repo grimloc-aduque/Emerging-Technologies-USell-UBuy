@@ -1,9 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>producto-detallado</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-barra-busqueda titulo = 'Producto Detallado' bg_color="bg-blue"></app-barra-busqueda>
+<ion-content class="ion-padding">
+  <h2>{{producto.nombre}}</h2>
+  <img [src]="producto.url_imagen">
+  <ion-row>
+    <ion-col size="6">
+      <h3>$ {{producto.precio}}</h3>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="block" shape="round" color="light" routerLink="/mis-reservas">
+        <ion-icon slot="start" name="bookmark-outline" class="color-green"></ion-icon>
+        Reservar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <p>{{producto.descripcion}}</p>
+  <br>
+  <h4>Vendido por {{vendedor.nombre}} {{vendedor.apellido}}</h4>
+  <ion-row>
+    <ion-col size="12" class="ion-text-center">
+      <ion-button color="light" routerLink="/perfil-publico">
+        <ion-icon slot="start" name="person-circle-outline" class="color-yellow"></ion-icon>
+        Ver información del vendedor
+      </ion-button>
+    </ion-col>
+  </ion-row>
 
-<ion-content>
+  
+  
 
 </ion-content>

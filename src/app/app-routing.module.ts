@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { BusquedaPage } from './pages/busqueda/busqueda.page';
 
 const routes: Routes = [
   {
@@ -43,7 +42,8 @@ const routes: Routes = [
   {
     path: 'crear-editar-producto',
     loadChildren: () => import('./pages/crear-editar-producto/crear-editar-producto.module').then( m => m.CrearEditarProductoPageModule)
-  },  {
+  },
+  {
     path: 'perfil-publico',
     loadChildren: () => import('./pages/perfil-publico/perfil-publico.module').then( m => m.PerfilPublicoPageModule)
   },

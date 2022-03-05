@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CrearEditarProductoPageRoutingModule } from './crear-editar-producto-routing.module';
 
 import { CrearEditarProductoPage } from './crear-editar-producto.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CrearEditarProductoPageRoutingModule
+    CrearEditarProductoPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [CrearEditarProductoPage]
 })

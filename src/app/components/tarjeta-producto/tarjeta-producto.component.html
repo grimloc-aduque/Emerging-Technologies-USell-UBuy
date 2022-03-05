@@ -1,0 +1,41 @@
+<ion-card>
+  <ion-card-content>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="4" (click) ='onClickCard()'>
+          <img [src]="producto.url_imagen">
+        </ion-col>
+        <ion-col [size]="show_options? '7': '8'" (click) ='onClickCard()'>
+          <h1> {{producto.nombre}} </h1>
+          <h2> {{producto.clase}} - ${{producto.precio}} </h2>
+          <hr>
+          <p>{{producto.descripcion}}</p>
+        </ion-col>
+
+        <ion-col size="1" *ngIf="show_options">
+          <ion-buttons>
+            <ion-button id="opciones-btn-{{producto.id}}">
+              <ion-icon slot="icon-only" name="ellipsis-vertical-outline" class = "{{color}}"></ion-icon>
+              <ion-popover trigger="opciones-btn-{{producto.id}}">
+                <ng-template>
+                  <ion-list>
+                    <ion-item *ngFor="let op of opciones">
+                      <ion-label>
+                        <a [routerLink]="op.link" style="color: black; text-decoration: none; ">
+                          {{op.nombre}}
+                        </a>
+                      </ion-label>
+
+                    </ion-item>
+                  </ion-list>
+                </ng-template>
+              </ion-popover>
+
+            </ion-button>
+          </ion-buttons>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

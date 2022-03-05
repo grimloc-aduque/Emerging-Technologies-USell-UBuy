@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ProductoDetalladoPageRoutingModule } from './producto-detallado-routing.module';
 
 import { ProductoDetalladoPage } from './producto-detallado.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductoDetalladoPageRoutingModule
+    ProductoDetalladoPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ProductoDetalladoPage]
 })

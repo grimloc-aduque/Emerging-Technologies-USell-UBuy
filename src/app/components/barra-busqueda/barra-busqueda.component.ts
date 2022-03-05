@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-barra-busqueda',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraBusquedaComponent implements OnInit {
 
-  constructor() { }
+  @Input() titulo: string = "";
+  @Input() bg_color: string = "";
+
+  constructor( private router: Router) { }
 
   ngOnInit() {}
+
+  closeModal(){
+    // this.router.navigate(['/busqueda'])
+  }
 
 }

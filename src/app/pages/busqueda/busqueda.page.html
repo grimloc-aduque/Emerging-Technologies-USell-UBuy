@@ -1,9 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>crear-cuenta</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-barra-busqueda titulo = 'Busqueda' bg_color="bg-blue"></app-barra-busqueda>
 <ion-content>
-
+  <app-tarjeta-producto *ngFor="let p of productos" 
+  [producto]="p" 
+  [onClickCard]="onClickCard" 
+  [show_options] = 'false'>
+  </app-tarjeta-producto>
 </ion-content>

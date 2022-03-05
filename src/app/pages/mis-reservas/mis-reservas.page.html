@@ -1,9 +1,10 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>mis-reservas</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-barra-busqueda titulo = 'Mis Reservas' bg_color="bg-green"></app-barra-busqueda>
 <ion-content>
-
+  <app-tarjeta-producto *ngFor="let p of productos" 
+    [producto]="p" 
+    [onClickCard]="onClickCard"
+    [show_options] = 'true' 
+    [opciones]="opciones"
+    color=color-green>
+  </app-tarjeta-producto>
 </ion-content>
