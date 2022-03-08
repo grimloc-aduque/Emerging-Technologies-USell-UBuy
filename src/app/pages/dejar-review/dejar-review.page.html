@@ -1,9 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>dejar-review</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-barra-busqueda titulo = 'Evaluar' bg_color="bg-green"></app-barra-busqueda>
 
-<ion-content>
+<ion-content ion class="ion-padding">
+  <ion-card>
+
+    <form class="ion-padding">
+      <ion-label>Calificación<ion-text color="danger">*</ion-text></ion-label>
+      <ion-item *ngFor="let datos of datosPerfil">
+        <ion-range min="-0" max="5"  [value]="datos.calificacionComoVendedor" snaps="true" ticks="true" [pin]="true" disabled="false">
+          <ion-icon size="small" slot="start" name="star" color="yellow"></ion-icon>
+          <ion-icon slot="end" name="star" color="yellow"></ion-icon>
+        </ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Comentario<ion-text color="danger">*</ion-text></ion-label>
+        <ion-textarea rows="15"></ion-textarea>
+      </ion-item>
+
+    </form>    
+  </ion-card>
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button block color="green" type="button" routerLink="/mis-reservas">
+          Enviar Evaluación
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
 
 </ion-content>

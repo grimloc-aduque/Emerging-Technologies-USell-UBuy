@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MiPerfilPageRoutingModule } from './mi-perfil-routing.module';
 
 import { MiPerfilPage } from './mi-perfil.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MiPerfilPageRoutingModule
+    MiPerfilPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [MiPerfilPage]
 })
