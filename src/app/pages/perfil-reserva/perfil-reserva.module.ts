@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PerfilReservaPageRoutingModule } from './perfil-reserva-routing.module';
 
 import { PerfilReservaPage } from './perfil-reserva.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PerfilReservaPageRoutingModule
+    PerfilReservaPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [PerfilReservaPage]
 })

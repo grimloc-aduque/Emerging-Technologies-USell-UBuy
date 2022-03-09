@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DejarReviewPage implements OnInit {
 
+  datosPerfil = [
+    {
+      calificacionComoVendedor: '4',
+    }
+  ]
+
   constructor() { }
 
   ngOnInit() {
