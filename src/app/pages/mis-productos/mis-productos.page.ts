@@ -75,4 +75,5 @@ export class MisProductosPage implements OnInit {
   onClickCard(){
     this.router.navigate(['crear-editar-producto'])
   }
+
 }

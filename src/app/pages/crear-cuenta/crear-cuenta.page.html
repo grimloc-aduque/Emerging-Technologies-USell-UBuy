@@ -5,37 +5,44 @@
 </ion-header>
 
 <ion-content>
-  <form class="ion-padding">
-    <ion-item>
-      <ion-label position="floating">Nombre<ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Apellido<ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Número de Celular<ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Correo Universitario<ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Carrera<ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text"></ion-input>
-    </ion-item>
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="12" class="ion-text-center">
-          <ion-button block color="dark" type="button" routerLink="/busqueda">
-            Registrarse
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-row style=" height: 60%;" class="ion-align-items-center">
+    <ion-col size="12">
 
-  </form>
+      <form class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Nombre<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Apellido<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Número de Celular<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo Universitario<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Carrera<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12" class="ion-text-center">
+              <ion-button expand="block" color="dark" type="button" routerLink="/busqueda">
+                Registrarse
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    
+    </ion-col>
+  </ion-row>
+
+
 
 </ion-content>

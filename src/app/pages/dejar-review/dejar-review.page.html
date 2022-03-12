@@ -1,4 +1,4 @@
-<app-barra-busqueda titulo = 'Evaluar' bg_color="bg-green"></app-barra-busqueda>
+<app-barra-busqueda titulo = 'Evaluar' bg_color="bg-yellow"></app-barra-busqueda>
 
 <ion-content ion class="ion-padding">
   <ion-card>
@@ -14,7 +14,7 @@
 
       <ion-item>
         <ion-label position="floating">Comentario<ion-text color="danger">*</ion-text></ion-label>
-        <ion-textarea rows="15"></ion-textarea>
+        <ion-textarea rows="12"></ion-textarea>
       </ion-item>
 
     </form>    
@@ -23,7 +23,8 @@
   <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col size="12" class="ion-text-center">
-        <ion-button block color="green" type="button" routerLink="/mis-reservas">
+        <ion-button expand="block" color="light" type="button" routerLink="/busqueda">
+          <ion-icon slot="start" name="star-half-outline" color="yellow"></ion-icon>
           Enviar Evaluación
         </ion-button>
       </ion-col>
@@ -31,3 +32,6 @@
   </ion-grid>  
 
 </ion-content>
+
+
+<app-menu-navegacion></app-menu-navegacion>

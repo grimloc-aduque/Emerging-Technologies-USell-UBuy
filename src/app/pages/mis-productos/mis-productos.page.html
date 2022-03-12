@@ -4,10 +4,8 @@
     <ion-row class="ion-align-items-center">
       <ion-col size="12" class="ion-text-center">
         <ion-button color="light" routerLink="/crear-editar-producto">
-          <ion-icon slot="start" name="add" class="color-red"></ion-icon>
+          <ion-icon slot="start" name="add" color="red"></ion-icon>
           <ion-text>Crear un nuevo producto</ion-text>
-          
-          
         </ion-button>
       </ion-col>
     </ion-row>
@@ -18,6 +16,13 @@
     [onClickCard]="onClickCard"
     [show_options] = 'true' 
     [opciones]="opciones"
-    color=color-red>
+    color=red>
   </app-tarjeta-producto>
+
 </ion-content>
+
+<app-menu-navegacion></app-menu-navegacion>
+
+
+
+

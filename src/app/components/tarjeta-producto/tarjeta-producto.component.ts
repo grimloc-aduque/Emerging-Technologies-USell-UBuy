@@ -14,10 +14,11 @@ export class TarjetaProductoComponent implements OnInit {
   @Input() color: String;
   @Input() onClickCard: Function;
   @Input() opciones: any[];
-  
 
   constructor(private router: Router) { }
 
   ngOnInit() {}
+  
+
 
 }

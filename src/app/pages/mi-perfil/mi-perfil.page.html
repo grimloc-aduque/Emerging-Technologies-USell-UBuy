@@ -47,14 +47,24 @@
       </ion-card>
   </ion-card>
   
-  <ion-item>
-    <ion-button block color="yellow" type="button" routerLink="/editar-perfil">
-      Editar Perfil
-    </ion-button>   
-  
-    <ion-button block color="red" type="button" routerLink="/inicio" slot="end">
-      Cerrar Sesión
-    </ion-button>
-  </ion-item>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button expand="block" color="light" type="button" routerLink="/editar-perfil">
+          <ion-icon slot="start" name="create-outline" color="yellow"></ion-icon>
+          Editar Perfil
+        </ion-button>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button expand="block" color="light" type="button" routerLink="/inicio">
+          <ion-icon slot="start" name="exit-outline" color="danger"></ion-icon>
+          Cerrar Sesión
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 
 </ion-content>
+
+<app-menu-navegacion></app-menu-navegacion>

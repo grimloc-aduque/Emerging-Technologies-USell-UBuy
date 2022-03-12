@@ -59,7 +59,7 @@ export class MisReservasPage implements OnInit {
       link: '/producto-detallado'
     },
     {
-      nombre: 'Contactar Comprador',
+      nombre: 'Ver Vendedor',
       link: '/perfil-reserva'
     },
     {
