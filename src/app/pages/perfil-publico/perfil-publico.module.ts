@@ -8,6 +8,7 @@ import { PerfilPublicoPageRoutingModule } from './perfil-publico-routing.module'
 
 import { PerfilPublicoPage } from './perfil-publico.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     PerfilPublicoPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ],
   declarations: [PerfilPublicoPage]
 })

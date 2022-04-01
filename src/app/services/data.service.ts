@@ -40,8 +40,8 @@ export class DataService {
   }
 
   getReviewById(id){
-    const usuariosRef = this.firestore.collection<Review>('reviews')
-    return usuariosRef.doc(id).get();
+    const reviewsRef = this.firestore.collection<Review>('reviews')
+    return reviewsRef.doc(id).get();
   }
 
 

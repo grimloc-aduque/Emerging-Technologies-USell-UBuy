@@ -2,7 +2,7 @@ import { Producto } from "./producto";
 import { Review } from "./review";
 
 export interface Usuario {
-    _id?: String;
+    _id: String;
     nombre: String;
     apellido: String;
     celular: String;

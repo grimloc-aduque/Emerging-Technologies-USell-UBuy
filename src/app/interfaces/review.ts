@@ -1,7 +1,8 @@
 export interface Review {
     _id: String,
-    calificacion: Number,
+    calificacion: number,
     comentario: String,
+    fecha: String[],
     id_producto: String,
     id_comprador: String,
     id_vendedor: String

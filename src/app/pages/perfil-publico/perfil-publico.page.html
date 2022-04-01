@@ -2,10 +2,9 @@
 
 
 <ion-content class="ion-padding">
-  <ion-card *ngFor="let datos of datosPerfil">
-
+  <ion-card *ngIf="reviews.length != 0">
       <ion-item>
-        <ion-label class="centrarTexto">{{datos.nombre}} {{datos.apellido}}</ion-label>
+        <ion-label class="centrarTexto">{{vendedor.nombre}} {{vendedor.apellido}}</ion-label>
       </ion-item>
 
       <ion-card>
@@ -14,7 +13,7 @@
         </ion-item>
         
         <ion-item>
-          <ion-range min="-0" max="5"  [value]="datos.calificacionComoVendedor" snaps="true" ticks="true" [pin]="true" disabled="true">
+          <ion-range min="-0" max="5"  [value]="reviews | puntajeReviews" snaps="true" ticks="true" [pin]="true" disabled="true">
             <ion-icon size="small" slot="start" name="star" color="yellow"></ion-icon>
             <ion-icon slot="end" name="star" color="yellow"></ion-icon>
           </ion-range>
@@ -27,12 +26,12 @@
       <ion-label >Comentarios</ion-label>
     </ion-item>
 
-    <ion-list *ngFor="let comentario of comentarios">
-      <ion-label class="ion-padding">{{comentario.nombre}} {{comentario.apellido}}</ion-label>
-      <ion-label class="ion-padding">{{comentario.fecha}}</ion-label>
+    <ion-list *ngFor="let review of reviews">
+      <ion-label class="ion-padding">{{review.calificacion}}</ion-label>
       <ion-item>
-        <ion-label>{{comentario.comentario}}</ion-label>
+        <ion-label>{{review.comentario}}</ion-label>
       </ion-item>
+      <ion-label class="ion-padding">{{review.fecha | fecha}}</ion-label>
     </ion-list>
 
   </ion-card>
