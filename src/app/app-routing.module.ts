@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/crear-cuenta/crear-cuenta.module').then( m => m.CrearCuentaPageModule)
   },
   {
-    path: 'producto-detallado',
+    path: 'producto-detallado/:id_producto',
     loadChildren: () => import('./pages/producto-detallado/producto-detallado.module').then( m => m.ProductoDetalladoPageModule)
   },
   {
