@@ -8,6 +8,7 @@ import { PerfilReservaPageRoutingModule } from './perfil-reserva-routing.module'
 
 import { PerfilReservaPage } from './perfil-reserva.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     PerfilReservaPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ],
   declarations: [PerfilReservaPage]
 })
