@@ -13,18 +13,6 @@ export class PerfilReservaPage implements OnInit {
   perfilContacto: Usuario;
   reviews: Review[] = [];
 
-  datosPerfil = [
-    {
-      nombre: 'Andrea',
-      apellido: 'Martínez',
-      numero: '0999999999',
-      correo: 'andreamartinez@estud.usfq.edu.ec',
-      carrera: 'Ingeniería Mecánica',
-      calificacionComoVendedor: '4',
-      calificacionComoComprador: '3'
-    }
-  ]
-
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
