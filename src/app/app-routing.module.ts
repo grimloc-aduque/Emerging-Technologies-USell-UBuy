@@ -44,7 +44,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/crear-editar-producto/crear-editar-producto.module').then( m => m.CrearEditarProductoPageModule)
   },
   {
-    path: 'perfil-publico/:id_vendedor',
+    path: 'perfil-publico',
     loadChildren: () => import('./pages/perfil-publico/perfil-publico.module').then( m => m.PerfilPublicoPageModule)
   },
   {

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Review } from 'src/app/interfaces/review';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -7,21 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MiPerfilPage implements OnInit {
 
-  datosPerfil = [
-    {
-      nombre: 'Andrea',
-      apellido: 'Martínez',
-      numero: '0999999999',
-      correo: 'andreamartinez@estud.usfq.edu.ec',
-      carrera: 'Ingeniería Mecánica',
-      calificacionComoVendedor: '4',
-      calificacionComoComprador: '3'
-    }
-  ]
+  perfil: Usuario;
+  reviews: Review[] = [];
 
-  constructor() { }
+  constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.dataService.getUsuarioById('Jla5t7VTwHQ7iRczUBFB').subscribe(
+      result => {
+        this.perfil = result.data();
+      }
+    )
+
+    this.dataService.getReviews().subscribe(
+      result => {
+        this.reviews = result
+      }
+    )
+
   }
 
 }

@@ -11,7 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class PerfilPublicoPage implements OnInit {
   
-  // private id_vendedor: String;
+  //private id_vendedor: String;
   vendedor: Usuario;
   reviews: Review[] = [];
 
