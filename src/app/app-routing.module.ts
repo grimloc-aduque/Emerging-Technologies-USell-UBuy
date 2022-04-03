@@ -4,12 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'busqueda',
+    redirectTo: 'inicio',
     pathMatch: 'full'
-  },
-  {
-    path: 'busqueda',
-    loadChildren: () => import('./pages/busqueda/busqueda.module').then( m => m.BusquedaPageModule)
   },
   {
     path: 'inicio',
@@ -18,6 +14,10 @@ const routes: Routes = [
   {
     path: 'crear-cuenta',
     loadChildren: () => import('./pages/crear-cuenta/crear-cuenta.module').then( m => m.CrearCuentaPageModule)
+  },
+  {
+    path: 'busqueda',
+    loadChildren: () => import('./pages/busqueda/busqueda.module').then( m => m.BusquedaPageModule)
   },
   {
     path: 'producto-detallado/:id_producto',
@@ -44,16 +44,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/crear-editar-producto/crear-editar-producto.module').then( m => m.CrearEditarProductoPageModule)
   },
   {
-    path: 'perfil-publico',
+    path: 'crear-editar-producto/:id_producto',
+    loadChildren: () => import('./pages/crear-editar-producto/crear-editar-producto.module').then( m => m.CrearEditarProductoPageModule)
+  },
+  {
+    path: 'perfil-publico/:id_vendedor',
     loadChildren: () => import('./pages/perfil-publico/perfil-publico.module').then( m => m.PerfilPublicoPageModule)
+  },
+  {
+    path: 'perfil-reserva/:id_usuario',
+    loadChildren: () => import('./pages/perfil-reserva/perfil-reserva.module').then( m => m.PerfilReservaPageModule)
   },
   {
     path: 'dejar-review',
     loadChildren: () => import('./pages/dejar-review/dejar-review.module').then( m => m.DejarReviewPageModule)
-  },
-  {
-    path: 'perfil-reserva',
-    loadChildren: () => import('./pages/perfil-reserva/perfil-reserva.module').then( m => m.PerfilReservaPageModule)
   }
 
 ];

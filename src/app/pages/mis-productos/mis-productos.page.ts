@@ -15,15 +15,18 @@ export class MisProductosPage implements OnInit {
   opciones: any[] = [
     {
       nombre: 'Editar',
-      link: '/crear-editar-producto'
+      link: '/crear-editar-producto',
+      sublink: '_id'
     },
     {
       nombre: 'Eliminar',
-      link: '/mis-productos'
+      link: '/mis-productos',
+      sublink: ''
     },
     {
       nombre: 'Ver Reserva',
-      link: '/perfil-reserva'
+      link: '/perfil-reserva',
+      sublink: 'id_comprador'
     }
   ]
 
@@ -37,8 +40,8 @@ export class MisProductosPage implements OnInit {
     )
   }
 
-  onClickCard(){
-    this.router.navigate(['crear-editar-producto'])
+  onClickCard(id_producto){
+    this.router.navigate(['crear-editar-producto', id_producto])
   }
 
 }

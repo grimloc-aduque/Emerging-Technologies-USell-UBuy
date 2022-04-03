@@ -7,6 +7,10 @@ import { Review } from '../interfaces/review';
 export class PuntajeReviewsPipe implements PipeTransform {
 
   transform(reviews: Review[]): number {
+    if(reviews.length == 0){
+      return 0;
+    }
+
     let calificacion_total:number = 0;
     reviews.forEach(
       review => {

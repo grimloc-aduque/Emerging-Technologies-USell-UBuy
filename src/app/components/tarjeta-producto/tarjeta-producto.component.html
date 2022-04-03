@@ -20,7 +20,7 @@
               <ion-popover trigger="opciones-btn-{{color}}-{{producto._id}}">
                 <ng-template>
                   <ion-list>
-                    <ion-item *ngFor="let opcion of opciones" [routerLink]="opcion.link">
+                    <ion-item *ngFor="let opcion of opciones" routerLink="{{opcion.link}}/{{producto[opcion.sublink]}}">
                       <ion-label>
                         <ion-text color="dark">
                           {{opcion.nombre}}

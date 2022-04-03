@@ -11,59 +11,49 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class PerfilPublicoPage implements OnInit {
   
-  //private id_vendedor: String;
+  private id_vendedor: String;
   vendedor: Usuario;
   reviews: Review[] = [];
+  score: number = 0;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.dataService.getUsuarioById('Jla5t7VTwHQ7iRczUBFB').subscribe(
-      result => {
-        this.vendedor = result.data();
-      }
-    )
-
-    this.dataService.getReviews().subscribe(
-      result => {
-        this.reviews = result
-      }
-    )
-
+    this.recuperarIdVendedor();
   }
 
-  // recuperarIdVendedor(){
-  //   this.route.paramMap.subscribe(
-  //     params => {
-  //       this.id_vendedor = params.get('id_vendedor')
-  //       console.log(this.id_vendedor)
-  //     }
-  //   )
-  // }
+  recuperarIdVendedor(){
+    this.route.paramMap.subscribe(
+      params => {
+        this.id_vendedor = params.get('id_vendedor')
+        console.log(this.id_vendedor)
+        this.getVendedor();
+      }
+    )
+  }
 
-  // getVendedor(){
-  //   this.dataService.getUsuarioById(this.id_vendedor).subscribe(
-  //     result => {
-  //       this.vendedor = result.data();
-  //       this.getReviews();
-  //     }
-  //   )
-  // }
+  getVendedor(){
+    this.dataService.getUsuarioById(this.id_vendedor).subscribe(
+      result => {
+        this.vendedor = result.data();
+        this.getReviews();
+      }
+    )
+  }
 
-  // getReviews(){
-  //   this.dataService.getReviews().subscribe(
-  //     results => {
-  //       results.forEach(
-  //         result => {
-  //           if(result.id_vendedor == this.id_vendedor){
-  //             console.log(result)
-  //             this.reviews.push(result)
-  //           }
-  //         }
-  //       )
-  //       console.log(this.reviews)
-  //     }
-  //   )
-  // }
+  getReviews(){
+    this.dataService.getReviews().subscribe(
+      result => {
+        result.forEach(
+          review => {
+            if(review.id_vendedor == this.id_vendedor){
+              this.reviews.push(review);
+              this.score = this.score + review.calificacion;
+            }
+          }
+        )
+      }
+    )
+  }
   
 }

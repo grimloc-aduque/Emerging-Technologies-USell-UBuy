@@ -10,27 +10,27 @@ export class MenuNavegacionComponent implements OnInit {
   opciones: any = [
     {
       icono: 'home-outline',
-      nombre: 'Busqueda',
+      nombre: 'Buscar',
       color: 'blue',
       link: '/busqueda',
     },
     {
-      icono: 'person-circle-outline',
-      nombre: 'Mi Perfil',
-      color: 'yellow',
-      link: '/mi-perfil',
-    },
-    {
       icono: 'pricetags-outline',
-      nombre: 'Mis Productos',
+      nombre: 'Vender',
       color: 'red',
       link: '/mis-productos',
     },
     {
       icono: 'bookmark-outline',
-      nombre: 'Mis Reservas',
+      nombre: 'Reservas',
       color: 'green',
       link: '/mis-reservas',
+    },
+    {
+      icono: 'person-circle-outline',
+      nombre: 'Perfil',
+      color: 'yellow',
+      link: '/mi-perfil',
     },
   ]
 

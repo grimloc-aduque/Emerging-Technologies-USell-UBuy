@@ -16,11 +16,13 @@ export class MisReservasPage implements OnInit {
   opciones: any[] = [
     {
       nombre: 'Ver Vendedor',
-      link: '/perfil-reserva'
+      link: '/perfil-reserva',
+      sublink: 'id_vendedor'
     },
     {
       nombre: 'Eliminar',
-      link: '/mis-reservas'
+      link: '/mis-reservas',
+      sublink: 'id_producto'
     }
   ]
   constructor( private router: Router, private dataService: DataService) { }
