@@ -16,6 +16,7 @@ export class BusquedaPage implements OnInit {
   constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
+    this.productos = []
     this.dataService.getProductos().subscribe(
       result => {
         console.log(result)    

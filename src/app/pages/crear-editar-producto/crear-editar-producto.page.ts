@@ -3,6 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto';
 import { DataService } from 'src/app/services/data.service';
 
+// Forms
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {Router} from "@angular/router"
+
 @Component({
   selector: 'app-crear-editar-producto',
   templateUrl: './crear-editar-producto.page.html',
@@ -10,6 +15,11 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CrearEditarProductoPage implements OnInit {
 
+  private id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+  private editing: Boolean;
+  productForm: FormGroup;
+
+  
   id_producto: String;
   producto: Producto ={
     _id: '',
@@ -24,9 +34,27 @@ export class CrearEditarProductoPage implements OnInit {
     id_comprador: ''
   }
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+
+  constructor(
+    private route: ActivatedRoute, 
+    private dataService: DataService,
+    private formBuilder: FormBuilder, 
+    private fireStore: AngularFirestore, 
+    private router: Router
+  ) {}
+
 
   ngOnInit() {
+    this.productForm = this.formBuilder.group({
+      nombre: '',
+      descripcion: '',
+      tipo: '',
+      clase: '',
+      precio: 0,
+      negociable: false,
+    })
+
+
     this.recuperarIdProducto();
   }
 
@@ -35,6 +63,7 @@ export class CrearEditarProductoPage implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         if(params.get('id_producto')){
+          this.editing = true
           this.id_producto = params.get('id_producto');
           this.getProducto();
         }
@@ -47,9 +76,48 @@ export class CrearEditarProductoPage implements OnInit {
     this.dataService.getProductoById(this.id_producto).subscribe(
       result => {
         this.producto = result.data();
-        console.log(this.producto)
+        console.log(this.producto);
       }
     )
+  }
+
+
+  onsubmitProductForm(){
+    if(this.editing){
+      this.updateProduct();
+    }
+    else{
+      this.createProduct();
+    }
+  }
+
+  updateProduct(){
+    console.log('update product')
+    this.router.navigate(['/mis-productos'])
+
+  }
+
+  createProduct(){
+    const formData = this.productForm.value;
+    formData['url_imagen'] = 'https://1.bp.blogspot.com/-6MTxuinGnq4/YAdpsbm-azI/AAAAAAAANp8/V939GxHEYYM1Nm9NByaGT-obPoO8WhJbACLcBGAsYHQ/s1022/calculo-de-una-variable-trascendentes-tempranas-7ma-edicion-james-stewart-freelibros.jpg'
+    formData['id_vendedor'] = this.id_sesion
+    formData['id_comprador'] = null
+    this.fireStore.collection('productos')
+      .add(
+        formData
+      )
+      .then(
+        res => {
+          console.log(res);
+          this.router.navigate(['/mis-productos']);
+        }
+      )
+      .catch(
+        e =>{
+          console.log(e);
+        }
+      )
+
   }
 
 }

@@ -1,24 +1,24 @@
 <app-barra-busqueda titulo = 'Crear/Editar Prod.' bg_color="bg-red"></app-barra-busqueda>
 <ion-content>
-  <form class="ion-padding">
+  <form [formGroup] = "productForm" class="ion-padding" (ngSubmit)="onsubmitProductForm()">
     <ion-item>
       <ion-label position="floating">Nombre del Producto<ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text" [value]="producto.nombre"></ion-input>
+      <ion-input required type="text" formControlName="nombre" [value]="producto.nombre"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Descripcion<ion-text color="danger">*</ion-text></ion-label>
-      <ion-textarea required type="text" [value]="producto.descripcion"></ion-textarea>
+      <ion-textarea required type="text" formControlName="descripcion" [value]="producto.descripcion"></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Tipo de Producto<ion-text color="danger">*</ion-text></ion-label>
-      <ion-select>
+      <ion-select formControlName="tipo">
         <ion-select-option value="Libro">Libro</ion-select-option>
         <ion-select-option value="Electronico">Electronico</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Clase donde lo usaste</ion-label>
-      <ion-select>
+      <ion-select formControlName="clase">
         <ion-select-option value="Calculo 1">Calculo 1</ion-select-option>
         <ion-select-option value="Calculo 2">Calculo 2</ion-select-option>
       </ion-select>
@@ -28,13 +28,13 @@
         <ion-col size="6">
           <ion-item>
             <ion-label position="floating">Precio</ion-label>
-            <ion-input type="number" [value]="producto.precio"></ion-input>
+            <ion-input type="number" formControlName="precio" [value]="producto.precio"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="6">
           <ion-item>
             <ion-label position="floating">Negociable</ion-label>
-            <ion-select>
+            <ion-select formControlName="negociable">
               <ion-select-option value="Si">Si</ion-select-option>
               <ion-select-option value="No">No</ion-select-option>
             </ion-select>
@@ -63,7 +63,7 @@
     <ion-grid>
       <ion-row class="ion-align-items-center">
         <ion-col size="12" class="ion-text-center">
-          <ion-button block color="light" type="button" routerLink="/mis-productos">
+          <ion-button block color="light" type="submit">
             <ion-icon slot="start" name="create-outline" color="red"> </ion-icon>
             <ion-text>Guardar Cambios</ion-text>
           </ion-button>

@@ -10,14 +10,13 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class EditarPerfilPage implements OnInit {
 
-  private id_usuario:String;
+  private id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
   perfil: Usuario;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id_usuario = 'Jla5t7VTwHQ7iRczUBFB'
-    this.dataService.getUsuarioById(this.id_usuario).subscribe(
+    this.dataService.getUsuarioById(this.id_sesion).subscribe(
       result => {
         this.perfil = result.data();
       }

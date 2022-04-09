@@ -11,6 +11,8 @@ import { DataService } from 'src/app/services/data.service';
 
 export class MisReservasPage implements OnInit {
 
+  private id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+
   productos: Producto[] = []
 
   opciones: any[] = [
@@ -28,9 +30,16 @@ export class MisReservasPage implements OnInit {
   constructor( private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
+    this.productos = []
     this.dataService.getProductos().subscribe(
-      result => {
-        this.productos = result
+      productos => {
+        productos.forEach(
+          producto => {
+            if(producto.id_comprador == this.id_sesion){
+              this.productos.push(producto)
+            }
+          }
+        )
       }
     )
   }

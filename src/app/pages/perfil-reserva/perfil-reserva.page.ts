@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Review } from 'src/app/interfaces/review';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { DataService } from 'src/app/services/data.service';
@@ -18,7 +18,7 @@ export class PerfilReservaPage implements OnInit {
   reviewsComprador: Review[] = [];
   scoreComprador: number = 0;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.recuperarIdUsuario();
@@ -28,6 +28,9 @@ export class PerfilReservaPage implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         this.id_usuario = params.get('id_usuario')
+        if(this.id_usuario == null){
+          this.router.navigate(['/mis-productos']);
+        }
         console.log(this.id_usuario)
         this.getUsuario();
       }

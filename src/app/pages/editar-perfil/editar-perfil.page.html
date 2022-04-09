@@ -5,31 +5,21 @@
     <form class="ion-padding">
       <ion-item>
         <ion-label position="floating">Nombre<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="text" [placeholder]="perfil.nombre"></ion-input>
+        <ion-input required type="text" [value]="perfil.nombre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Apellido<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="text" [placeholder]="perfil.apellido"></ion-input>
+        <ion-input required type="text" [value]="perfil.apellido"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Número de Celular<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="tel" maxlength="10" [placeholder]="perfil.celular"></ion-input>
+        <ion-input required type="tel" maxlength="10" [value]="perfil.celular"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Carrera<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="text" [placeholder]="perfil.carrera"></ion-input>
-      </ion-item>  
-
-      <ion-item>
-        <ion-label position="floating">Contraseña<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="password"></ion-input>
-      </ion-item> 
-
-      <ion-item>
-        <ion-label position="floating">Confirmar contraseña<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="password"></ion-input>
-      </ion-item> 
+        <ion-input required type="text" [value]="perfil.carrera"></ion-input>
+      </ion-item>
     </form>    
   </ion-card>
 

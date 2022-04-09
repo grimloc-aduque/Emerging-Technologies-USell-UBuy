@@ -52,6 +52,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/perfil-publico/perfil-publico.module').then( m => m.PerfilPublicoPageModule)
   },
   {
+    path: 'perfil-reserva',
+    loadChildren: () => import('./pages/perfil-reserva/perfil-reserva.module').then( m => m.PerfilReservaPageModule)
+  },
+  {
     path: 'perfil-reserva/:id_usuario',
     loadChildren: () => import('./pages/perfil-reserva/perfil-reserva.module').then( m => m.PerfilReservaPageModule)
   },
