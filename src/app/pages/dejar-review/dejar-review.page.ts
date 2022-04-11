@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {Router} from "@angular/router"
+import { timeStamp } from 'console';
 
 @Component({
   selector: 'app-dejar-review',
@@ -7,15 +11,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DejarReviewPage implements OnInit {
 
-  datosPerfil = [
-    {
-      calificacionComoVendedor: '4',
-    }
-  ]
+  reviewForm: FormGroup;
 
-  constructor() { }
+  private id_comprador = 'Jla5t7VTwHQ7iRczUBFB'
+  private id_vendedor = '7LlbWxXaePqayFUc00ID'
+  private id_producto = 'SPgWCa0tBo6u2ZWHx9dw'
+
+  private date: Date = new Date();  
+
+  constructor(
+    private formBuilder: FormBuilder, 
+    private fireStore: AngularFirestore, 
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.reviewForm = this.formBuilder.group({
+      calificacion: '',
+      comentario: ''
+    })
+  }
+  
+  sendReview(){
+    const formData = this.reviewForm.value;
+    formData['fecha'] = this.date;
+    formData['id_producto'] = this.id_producto;
+    formData['id_comprador'] = this.id_comprador;
+    formData['id_vendedor'] = this.id_vendedor;
+
+    this.fireStore.collection('reviews')
+      .add(
+        formData
+      )
+      .then(
+        res => {
+          console.log(res);
+          this.router.navigate(['/busqueda']);
+        }
+      )
+      .catch(
+        e => {
+          console.log(e)
+        }
+      )
+    console.log(formData)
   }
 
 }

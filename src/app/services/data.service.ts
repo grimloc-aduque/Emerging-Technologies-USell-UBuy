@@ -44,5 +44,12 @@ export class DataService {
     return reviewsRef.doc(id).get();
   }
 
-
+  async update(collection, id, dato){
+    try{
+      return await this.firestore.collection(collection).doc(id).set(dato);
+    }
+    catch (error){
+      console.log("error", error)
+    }
+  }
 }
