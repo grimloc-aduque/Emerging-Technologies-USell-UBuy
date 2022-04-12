@@ -64,9 +64,11 @@ export class EditarPerfilPage implements OnInit {
   editPerfil(){
     const formData = this.editPerfilForm.value;
 
-    this.dataService.update('usuarios', this.id_sesion, formData).then(res=>{
-      this.router.navigate(['/mi-perfil']);
-      location.reload();    
+    this.dataService.update('usuarios', this.id_sesion, formData)
+    .then(res=>{
+      this.router.navigate(['/mi-perfil']).then(() => {
+        location.reload();
+      })
     })
     .catch (err=>{
       console.log("error", err)

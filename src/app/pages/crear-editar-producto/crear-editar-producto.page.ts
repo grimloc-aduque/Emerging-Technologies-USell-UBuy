@@ -92,8 +92,24 @@ export class CrearEditarProductoPage implements OnInit {
   }
 
   updateProduct(){
-    console.log('update product')
-    this.router.navigate(['/mis-productos'])
+    // console.log('update product')
+    // this.router.navigate(['/mis-productos'])
+    const formData = this.productForm.value;
+    formData['url_imagen'] = this.producto.url_imagen
+    formData['id_vendedor'] = this.producto.id_vendedor
+    formData['id_comprador'] = this.producto.id_comprador
+
+    this.dataService.update('productos', this.id_producto, formData)
+    .then(res=>{
+      this.router.navigate(['/mis-productos']).then(() => {
+        location.reload();
+      });
+    })
+    .catch (err=>{
+      console.log("error", err)
+    })
+
+    console.log('producto editado:', formData);
 
   }
 
@@ -109,7 +125,9 @@ export class CrearEditarProductoPage implements OnInit {
       .then(
         res => {
           console.log(res);
-          this.router.navigate(['/mis-productos']);
+          this.router.navigate(['/mis-productos']).then(() => {
+            location.reload();
+          });
         }
       )
       .catch(
