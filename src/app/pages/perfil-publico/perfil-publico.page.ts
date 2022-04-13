@@ -52,6 +52,7 @@ export class PerfilPublicoPage implements OnInit {
             }
           }
         )
+        this.score = this.score/this.reviews.length
       }
     )
   }

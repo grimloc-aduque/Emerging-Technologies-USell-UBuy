@@ -61,6 +61,8 @@ export class PerfilReservaPage implements OnInit {
             }
           }
         )
+        this.scoreVendedor = this.scoreVendedor/this.reviewsVendedor.length
+        this.scoreComprador = this.scoreComprador/this.reviewsComprador.length
       }
     )
   }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FechaPipe } from './fecha.pipe';
-import { PuntajeReviewsPipe } from './puntaje-reviews.pipe';
 import { RangePipe } from './range.pipe';
 
 
@@ -9,7 +8,6 @@ import { RangePipe } from './range.pipe';
 @NgModule({
   declarations: [
     FechaPipe,
-    PuntajeReviewsPipe,
     RangePipe
   ],
   imports: [
@@ -17,7 +15,6 @@ import { RangePipe } from './range.pipe';
   ],
   exports: [
     FechaPipe,
-    PuntajeReviewsPipe,
     RangePipe
   ]
 })
