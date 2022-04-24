@@ -49,6 +49,10 @@ export class PerfilReservaPage implements OnInit {
   getReviews(){
     this.dataService.getReviews().subscribe(
       result => {
+        this.reviewsComprador = []
+        this.reviewsVendedor = []
+        this.scoreComprador = 0
+        this.scoreVendedor = 0
         result.forEach(
           review => {
             if(review.id_vendedor == this.id_usuario){

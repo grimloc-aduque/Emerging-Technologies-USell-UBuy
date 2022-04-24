@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { DataService } from 'src/app/services/data.service';
@@ -17,7 +17,11 @@ export class ProductoDetalladoPage implements OnInit {
   producto: Producto;
   vendedor: Usuario;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private dataService: DataService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.recuperarIdProducto();
@@ -49,6 +53,11 @@ export class ProductoDetalladoPage implements OnInit {
         console.log(this.vendedor)
       }
     )
+  }
+
+  clickReservar(){
+    this.dataService.reservarProducto(this.producto);
+    this.router.navigateByUrl('/mis-reservas');
   }
 
 }

@@ -76,7 +76,6 @@ export class CrearEditarProductoPage implements OnInit {
     this.dataService.getProductoById(this.id_producto).subscribe(
       result => {
         this.producto = result.data();
-        console.log(this.producto);
       }
     )
   }
@@ -92,25 +91,13 @@ export class CrearEditarProductoPage implements OnInit {
   }
 
   updateProduct(){
-    // console.log('update product')
-    // this.router.navigate(['/mis-productos'])
     const formData = this.productForm.value;
     formData['url_imagen'] = this.producto.url_imagen
     formData['id_vendedor'] = this.producto.id_vendedor
     formData['id_comprador'] = this.producto.id_comprador
 
-    this.dataService.update('productos', this.id_producto, formData)
-    .then(res=>{
-      this.router.navigate(['/mis-productos']).then(() => {
-        location.reload();
-      });
-    })
-    .catch (err=>{
-      console.log("error", err)
-    })
-
-    console.log('producto editado:', formData);
-
+    this.dataService.update('productos', this.id_producto, formData);
+    this.router.navigateByUrl('/mis-productos');
   }
 
   createProduct(){
@@ -118,24 +105,12 @@ export class CrearEditarProductoPage implements OnInit {
     formData['url_imagen'] = 'https://1.bp.blogspot.com/-6MTxuinGnq4/YAdpsbm-azI/AAAAAAAANp8/V939GxHEYYM1Nm9NByaGT-obPoO8WhJbACLcBGAsYHQ/s1022/calculo-de-una-variable-trascendentes-tempranas-7ma-edicion-james-stewart-freelibros.jpg'
     formData['id_vendedor'] = this.id_sesion
     formData['id_comprador'] = null
-    this.fireStore.collection('productos')
-      .add(
-        formData
-      )
-      .then(
+    this.fireStore.collection('productos').add(formData).then(
         res => {
           console.log(res);
-          this.router.navigate(['/mis-productos']).then(() => {
-            location.reload();
-          });
+          this.router.navigate(['/mis-productos']);
         }
       )
-      .catch(
-        e =>{
-          console.log(e);
-        }
-      )
-
   }
 
 }

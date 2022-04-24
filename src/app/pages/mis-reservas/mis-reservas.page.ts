@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto';
 import { DataService } from 'src/app/services/data.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-mis-reservas',
@@ -18,22 +19,38 @@ export class MisReservasPage implements OnInit {
   opciones: any[] = [
     {
       nombre: 'Ver Vendedor',
-      link: '/perfil-reserva',
-      sublink: 'id_vendedor'
+      handler: (producto: Producto) => {
+        this.router.navigate(['/perfil-reserva', producto.id_vendedor]);
+      },
+      show: (producto) => true
     },
     {
       nombre: 'Eliminar',
-      link: '/mis-reservas',
-      sublink: 'id_producto'
+      handler: (producto: Producto) => {
+        producto.id_comprador = null;
+        this.dataService.deleteProductoComprador(producto);
+        this.toastService.presentToast('Producto eliminado de mis reservas');
+      },
+      show: (producto) => true
     }
   ]
-  constructor( private router: Router, private dataService: DataService) { }
+
+
+  constructor( 
+    private router: Router, 
+    private dataService: DataService,
+    private toastService: ToastService) { }
 
   ngOnInit() {
     this.productos = []
+    this.populateProducts();
+  }
+
+  populateProducts(){
     this.dataService.getProductos().subscribe(
-      productos => {
-        productos.forEach(
+      result => {
+        this.productos = []
+        result.forEach(
           producto => {
             if(producto.id_comprador == this.id_sesion){
               this.productos.push(producto)

@@ -36,6 +36,8 @@ export class MiPerfilPage implements OnInit {
   getReviews(){
     this.dataService.getReviews().subscribe(
       result => {
+        this.scoreVendedor = 0;
+        this.scoreComprador = 0;
         result.forEach(
           review => {
             if(review.id_vendedor == this.id_sesion){
@@ -48,8 +50,8 @@ export class MiPerfilPage implements OnInit {
             }
           }
         )
-        this.scoreVendedor = this.scoreVendedor/this.reviewsVendedor.length
-        this.scoreComprador = this.scoreComprador/this.reviewsComprador.length
+        this.scoreVendedor = this.scoreVendedor/this.reviewsVendedor.length;
+        this.scoreComprador = this.scoreComprador/this.reviewsComprador.length;
       }
     )
   }

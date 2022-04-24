@@ -12,44 +12,53 @@ import { Review } from '../interfaces/review';
   providedIn: 'root'
 })
 export class DataService {
+  productosRef = this.firestore.collection<Producto>('productos');
+  usuariosRef = this.firestore.collection<Usuario>('usuarios');
+  reviewsRef = this.firestore.collection<Review>('reviews');
+
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) { }
 
   getProductos(){
-    return this.firestore.collection<Producto>('productos').valueChanges({idField: '_id'});
+    return this.productosRef.valueChanges({idField: '_id'});
   }
 
   getProductoById(id){
-    const productosRef = this.firestore.collection<Producto>('productos')
-    return productosRef.doc(id).get();
+    return this.productosRef.doc(id).get();
   }
 
-
   getUsuarios(){
-    return this.firestore.collection<Usuario>('usuarios').valueChanges({idField: '_id'});
+    return this.usuariosRef.valueChanges({idField: '_id'});
   }
 
   getUsuarioById(id){
-    const usuariosRef = this.firestore.collection<Usuario>('usuarios')
-    return usuariosRef.doc(id).get();
+    return this.usuariosRef.doc(id).get();
   }
 
-  
   getReviews(){
-    return this.firestore.collection<Review>('reviews').valueChanges({idField: '_id'});
+    return this.reviewsRef.valueChanges({idField: '_id'});
   }
 
   getReviewById(id){
-    const reviewsRef = this.firestore.collection<Review>('reviews')
-    return reviewsRef.doc(id).get();
+    return this.reviewsRef.doc(id).get();
   }
 
-  async update(collection, id, dato){
-    try{
-      return await this.firestore.collection(collection).doc(id).set(dato);
-    }
-    catch (error){
-      console.log("error", error)
-    }
+  update(collection, id, dato){
+      this.firestore.collection(collection).doc(id).set(dato);
+  }
+
+
+  deleteProductoVendedor(producto: Producto){
+    this.productosRef.doc(producto._id).delete();
+  }
+
+  deleteProductoComprador(producto: Producto){
+    this.update('productos',  producto._id, producto)
+  }
+
+  reservarProducto(producto:Producto){
+    const id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+    producto.id_comprador = id_sesion
+    this.update('productos', producto._id, producto);
   }
 }

@@ -1,12 +1,12 @@
 export interface Producto {
-    _id: String;
-    nombre: String;
-    descripcion: String;
-    tipo: String;
-    clase: String;
-    precio: Number;
-    negociable: Boolean;
-    url_imagen: String;
-    id_vendedor: String;
-    id_comprador: String;
+    _id: string;
+    nombre: string;
+    descripcion: string;
+    tipo: string;
+    clase: string;
+    precio: number;
+    negociable: boolean;
+    url_imagen: string;
+    id_vendedor: string;
+    id_comprador: string;
   }

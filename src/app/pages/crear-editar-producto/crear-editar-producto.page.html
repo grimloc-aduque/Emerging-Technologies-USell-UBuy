@@ -35,8 +35,8 @@
           <ion-item>
             <ion-label position="floating">Negociable</ion-label>
             <ion-select formControlName="negociable">
-              <ion-select-option value="Si">Si</ion-select-option>
-              <ion-select-option value="No">No</ion-select-option>
+              <ion-select-option [value]="true">Si</ion-select-option>
+              <ion-select-option [value]="false">No</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>

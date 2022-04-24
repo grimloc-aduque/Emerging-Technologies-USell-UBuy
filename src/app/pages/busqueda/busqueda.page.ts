@@ -18,9 +18,8 @@ export class BusquedaPage implements OnInit {
   ngOnInit() {
     this.productos = []
     this.dataService.getProductos().subscribe(
-      result => {
-        console.log(result)    
-        this.productos = result
+      result => { 
+        this.productos = result.filter(product => product.id_comprador ==null)
       }
     )
   }

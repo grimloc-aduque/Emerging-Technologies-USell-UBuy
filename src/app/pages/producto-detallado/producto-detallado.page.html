@@ -6,8 +6,8 @@
     <ion-col size="6">
       <h3>$ {{producto.precio}}</h3>
     </ion-col>
-    <ion-col size="6">
-      <ion-button expand="block" shape="round" color="light" routerLink="/mis-reservas">
+    <ion-col *ngIf="producto.id_comprador == null" size="6">
+      <ion-button expand="block" shape="round" color="light" (click)="clickReservar()">
         <ion-icon slot="start" name="bookmark-outline" color="green"></ion-icon>
         Reservar
       </ion-button>

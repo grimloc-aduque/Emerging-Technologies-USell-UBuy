@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Producto } from 'src/app/interfaces/producto';
 import { DataService } from 'src/app/services/data.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-mis-productos',
@@ -17,28 +19,38 @@ export class MisProductosPage implements OnInit {
   opciones: any[] = [
     {
       nombre: 'Editar',
-      link: '/crear-editar-producto',
-      sublink: '_id'
+      handler: (producto: Producto) => {
+        this.router.navigate(['/crear-editar-producto', producto._id]);
+      },
+      show: (producto) => true
     },
     {
       nombre: 'Eliminar',
-      link: '/mis-productos',
-      sublink: ''
+      handler: (producto: Producto) => {
+        this.dataService.deleteProductoVendedor(producto);
+        this.toastService.presentToast('Producto eliminado de mis productos')
+      },
+      show: (producto) => true
     },
     {
       nombre: 'Ver Reserva',
-      link: '/perfil-reserva',
-      sublink: 'id_comprador'
+      handler: (producto: Producto) => {
+        this.router.navigate(['/perfil-reserva', producto.id_comprador]);
+      },
+      show: (producto) => producto.id_comprador
     }
   ]
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(
+    private router: Router, 
+    private dataService: DataService,
+    private toastService: ToastService) { }
 
   ngOnInit() {
-    this.productos = []
     this.dataService.getProductos().subscribe(
-      productos => {
-        productos.forEach(
+      result => {
+        this.productos = []
+        result.forEach(
           producto => {
             if(producto.id_vendedor == this.id_sesion){
               this.productos.push(producto)

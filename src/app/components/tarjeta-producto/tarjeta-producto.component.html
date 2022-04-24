@@ -5,33 +5,34 @@
         <ion-col size="4" (click) ="onClickCard(producto._id)">
           <img [src]="producto.url_imagen">
         </ion-col>
-        <ion-col [size]="show_options? '7': '8'" (click) ='onClickCard(producto._id)'>
+        <ion-col [size]="page!='busqueda'? '7': '8'" (click) ='onClickCard(producto._id)'>
           <h1> {{producto.nombre}} </h1>
           <h2> {{producto.clase}} - ${{producto.precio}} </h2>
           <hr>
           <p>{{producto.descripcion}}</p>
         </ion-col>
 
-        <ion-col size="1" *ngIf="show_options">
+        <ion-col size="1" *ngIf="page!='busqueda'">
           <ion-buttons>
-            <ion-button id="opciones-btn-{{color}}-{{producto._id}}">
+            <ion-button id="opciones-btn-{{page}}-{{producto._id}}">
               <ion-icon slot="icon-only" name="ellipsis-vertical-outline" color="{{color}}"></ion-icon>
 
-              <ion-popover trigger="opciones-btn-{{color}}-{{producto._id}}">
+              <ion-popover trigger="opciones-btn-{{page}}-{{producto._id}}">
                 <ng-template>
                   <ion-list>
-                    <ion-item *ngFor="let opcion of opciones" routerLink="{{opcion.link}}/{{producto[opcion.sublink]}}">
-                      <ion-label>
-                        <ion-text color="dark">
-                          {{opcion.nombre}}
-                        </ion-text>
-                      </ion-label>
-                    </ion-item>
+                    <ng-container *ngFor="let opcion of opciones">
+                      <ion-item *ngIf="opcion.show(producto)">
+                        <!-- <ion-label (click)="printRoute()"> -->
+                        <ion-label (click)="opcion.handler(producto)">
+                          <ion-text color="dark">
+                            {{opcion.nombre}}
+                          </ion-text>
+                        </ion-label>
+                      </ion-item>
+                    </ng-container> 
                   </ion-list>
                 </ng-template>
               </ion-popover>
-
-
 
             </ion-button>
           </ion-buttons>

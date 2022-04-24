@@ -44,6 +44,8 @@ export class PerfilPublicoPage implements OnInit {
   getReviews(){
     this.dataService.getReviews().subscribe(
       result => {
+        this.reviews = []
+        this.score = 0
         result.forEach(
           review => {
             if(review.id_vendedor == this.id_vendedor){
