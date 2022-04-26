@@ -14,7 +14,13 @@
       </ion-buttons> -->
       <ion-row class="ion-align-items-center">
         <ion-col size="12">
-          <ion-searchbar placeholder="Buscar" showClearButton="focus" style="padding: 0px !important;"></ion-searchbar>
+          <ion-searchbar 
+            placeholder="Buscar" 
+            showClearButton="focus" 
+            inputmode="text"
+            (search) = "onSearch($event)"
+            debounce="250"
+            style="padding: 0px !important;"></ion-searchbar>
         </ion-col>
       </ion-row>
     
