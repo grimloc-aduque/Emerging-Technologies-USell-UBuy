@@ -13,7 +13,7 @@ import { DataService } from 'src/app/services/data.service';
 
 export class ProductoDetalladoPage implements OnInit {
 
-  private id_producto: String;
+  private id_producto: string;
   producto: Producto;
   vendedor: Usuario;
 
@@ -40,7 +40,7 @@ export class ProductoDetalladoPage implements OnInit {
     this.dataService.getProductoById(this.id_producto).subscribe(
       result => {
         this.producto = result.data();
-        console.log(this.producto)
+        this.producto._id = this.id_producto;
         this.getUsuario();
       }
     )

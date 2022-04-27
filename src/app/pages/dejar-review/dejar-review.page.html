@@ -1,27 +1,27 @@
-<app-barra-busqueda titulo = 'Evaluar' bg_color="bg-yellow"></app-barra-busqueda>
+<app-barra-busqueda titulo = 'Evaluar'></app-barra-busqueda>
 
-<ion-content ion class="ion-padding" color="fondo" fullscreen="true">
+<ion-content ion class="ion-padding" color="light" fullscreen="true">
   <ion-card>
 
     <form [formGroup] = "reviewForm" class="ion-padding" (ngSubmit)="sendReview()">
-      <ion-label>Calificación<ion-text color="danger">*</ion-text></ion-label>
+      <ion-label>Calificación<ion-text color="red">*</ion-text></ion-label>
       <ion-item>
-        <ion-range min="-0" max="5" value="" snaps="true" ticks="true" [pin]="true" disabled="false" formControlName="calificacion">
-          <ion-icon size="small" slot="start" name="star" color="yellow"></ion-icon>
-          <ion-icon slot="end" name="star" color="yellow"></ion-icon>
+        <ion-range min="-0" max="5" value="" snaps="true" ticks="true" [pin]="true" formControlName="calificacion">
+          <ion-icon size="small" slot="start" name="star" color="gold"></ion-icon>
+          <ion-icon slot="end" name="star" color="gold"></ion-icon>
         </ion-range>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Comentario<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="floating">Comentario<ion-text color="red">*</ion-text></ion-label>
         <ion-textarea rows="12" formControlName="comentario"></ion-textarea>
       </ion-item>
 
   <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col size="12" class="ion-text-center">
-        <ion-button expand="block" color="light" type="button" routerLink="/busqueda" type="submit">
-          <ion-icon slot="start" name="star-half-outline" color="yellow"></ion-icon>
+        <ion-button expand="block" color="dark" type="button" routerLink="/busqueda" type="submit">
+          <ion-icon slot="start" name="star-half-outline" color="gold"></ion-icon>
           Enviar Evaluación
         </ion-button>
       </ion-col>
@@ -33,4 +33,4 @@
 </ion-content>
 
 
-<app-menu-navegacion></app-menu-navegacion>
+<app-menu-navegacion seccion="Perfil"></app-menu-navegacion>

@@ -77,47 +77,23 @@
 
 
   // Paleta de colores de USell UBuy
-  //blue
-  --ion-color-blue: #72C4E8;
-	--ion-color-blue-rgb: 114,196,232;
-	--ion-color-blue-contrast: #000000;
-	--ion-color-blue-contrast-rgb: 0,0,0;
-	--ion-color-blue-shade: #64accc;
-	--ion-color-blue-tint: #80caea;
+  // red
+	--ion-color-red: #ee3124ff;
+	--ion-color-red-rgb: 49,36,255;
+	--ion-color-red-contrast: #ffffff;
+	--ion-color-red-contrast-rgb: 255,255,255;
+	--ion-color-red-shade: #2b20e0;
+	--ion-color-red-tint: #463aff;
 
-  //red
-	--ion-color-red: #EC5353;
-	--ion-color-red-rgb: 236,83,83;
-	--ion-color-red-contrast: #000000;
-	--ion-color-red-contrast-rgb: 0,0,0;
-	--ion-color-red-shade: #d04949;
-	--ion-color-red-tint: #ee6464;
+  // gold
+  --ion-color-gold: #e6b223ff;
+	--ion-color-gold-rgb: 178,35,255;
+	--ion-color-gold-contrast: #ffffff;
+	--ion-color-gold-contrast-rgb: 255,255,255;
+	--ion-color-gold-shade: #9d1fe0;
+	--ion-color-gold-tint: #ba39ff;
 
-  //green
-	--ion-color-green: #42C686;
-	--ion-color-green-rgb: 66,198,134;
-	--ion-color-green-contrast: #000000;
-	--ion-color-green-contrast-rgb: 0,0,0;
-	--ion-color-green-shade: #3aae76;
-	--ion-color-green-tint: #55cc92;
-
-  //yellow
-	--ion-color-yellow: #F3CC60;
-	--ion-color-yellow-rgb: 243,204,96;
-	--ion-color-yellow-contrast: #000000;
-	--ion-color-yellow-contrast-rgb: 0,0,0;
-	--ion-color-yellow-shade: #d6b454;
-	--ion-color-yellow-tint: #f4d170;
-
-  //fondo
-  --ion-color-fondo: #dadada;
-	--ion-color-fondo-rgb: 218,218,218;
-	--ion-color-fondo-contrast: #000000;
-	--ion-color-fondo-contrast-rgb: 0,0,0;
-	--ion-color-fondo-shade: #c0c0c0;
-	--ion-color-fondo-tint: #dedede;
-
-  //transparente
+  // transparente
   --ion-color-transparente: #e5e5e5bc;
 	--ion-color-transparente-rgb: 229,229,188;
 	--ion-color-transparente-contrast: #000000;
@@ -285,17 +261,9 @@
   }
 }
 
-//blue
-.ion-color-blue {
-  --ion-color-base: var(--ion-color-blue);
-  --ion-color-base-rgb: var(--ion-color-blue-rgb);
-  --ion-color-contrast: var(--ion-color-blue-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-blue-contrast-rgb);
-  --ion-color-shade: var(--ion-color-blue-shade);
-  --ion-color-tint: var(--ion-color-blue-tint);
-}
 
-//red
+
+// red
 .ion-color-red {
   --ion-color-base: var(--ion-color-red);
   --ion-color-base-rgb: var(--ion-color-red-rgb);
@@ -305,37 +273,17 @@
   --ion-color-tint: var(--ion-color-red-tint);
 }
 
-//green
-.ion-color-green {
-  --ion-color-base: var(--ion-color-green);
-  --ion-color-base-rgb: var(--ion-color-green-rgb);
-  --ion-color-contrast: var(--ion-color-green-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb);
-  --ion-color-shade: var(--ion-color-green-shade);
-  --ion-color-tint: var(--ion-color-green-tint);
+// gold
+.ion-color-gold {
+	--ion-color-base: var(--ion-color-gold);
+	--ion-color-base-rgb: var(--ion-color-gold-rgb);
+	--ion-color-contrast: var(--ion-color-gold-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-gold-contrast-rgb);
+	--ion-color-shade: var(--ion-color-gold-shade);
+	--ion-color-tint: var(--ion-color-gold-tint);
 }
 
-//yellow
-.ion-color-yellow {
-  --ion-color-base: var(--ion-color-yellow);
-  --ion-color-base-rgb: var(--ion-color-yellow-rgb);
-  --ion-color-contrast: var(--ion-color-yellow-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-yellow-contrast-rgb);
-  --ion-color-shade: var(--ion-color-yellow-shade);
-  --ion-color-tint: var(--ion-color-yellow-tint);
-}
-
-//fondo
-.ion-color-fondo {
-  --ion-color-base: var(--ion-color-fondo);
-	--ion-color-base-rgb: var(--ion-color-fondo-rgb);
-	--ion-color-contrast: var(--ion-color-fondo-contrast);
-	--ion-color-contrast-rgb: var(--ion-color-fondo-contrast-rgb);
-	--ion-color-shade: var(--ion-color-fondo-shade);
-	--ion-color-tint: var(--ion-color-fondo-tint);
-}
-
-//transparente
+// transparente
 .ion-color-transparente {
   --ion-color-base: var(--ion-color-transparente);
 	--ion-color-base-rgb: var(--ion-color-transparente-rgb);

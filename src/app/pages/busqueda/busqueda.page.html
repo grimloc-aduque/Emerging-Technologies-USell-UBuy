@@ -1,6 +1,6 @@
-<app-barra-busqueda mode="ios" titulo = 'Búsqueda' bg_color="bg-blue"></app-barra-busqueda>
+<app-barra-busqueda mode="ios" titulo = 'Búsqueda'></app-barra-busqueda>
 
-<ion-content color="fondo" fullscreen="true">
+<ion-content color="light" fullscreen="true">
   <app-tarjeta-producto  *ngFor="let p of productos" 
   [producto]="p" 
   [onClickCard]="onClickCard">
@@ -8,4 +8,4 @@
 
 </ion-content>
 
-<app-menu-navegacion></app-menu-navegacion>
+<app-menu-navegacion seccion="Buscar"></app-menu-navegacion>

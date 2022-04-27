@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-menu-navegacion',
@@ -7,29 +7,27 @@ import { Component, OnInit} from '@angular/core';
 })
 export class MenuNavegacionComponent implements OnInit {
 
+  @Input() seccion:string;
+
   opciones: any = [
     {
       icono: 'home-outline',
       nombre: 'Buscar',
-      color: 'blue',
       link: '/busqueda',
     },
     {
       icono: 'pricetags-outline',
       nombre: 'Vender',
-      color: 'red',
       link: '/mis-productos',
     },
     {
       icono: 'bookmark-outline',
       nombre: 'Reservas',
-      color: 'green',
       link: '/mis-reservas',
     },
     {
       icono: 'person-circle-outline',
       nombre: 'Perfil',
-      color: 'yellow',
       link: '/mi-perfil',
     },
   ]

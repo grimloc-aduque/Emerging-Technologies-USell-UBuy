@@ -1,5 +1,5 @@
-<app-barra-busqueda titulo = 'Mis Reservas' bg_color="bg-green"></app-barra-busqueda>
-<ion-content color="fondo">
+<app-barra-busqueda titulo = 'Mis Reservas'></app-barra-busqueda>
+<ion-content color="light">
   <app-tarjeta-producto *ngFor="let p of productos" 
     [producto]="p" 
     [onClickCard]="onClickCard"
@@ -8,4 +8,4 @@
   </app-tarjeta-producto>
 </ion-content>
 
-<app-menu-navegacion></app-menu-navegacion>
+<app-menu-navegacion seccion="Reservas"></app-menu-navegacion>

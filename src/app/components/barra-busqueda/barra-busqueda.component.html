@@ -3,13 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" text="Regresar" color="dark" mode="ios" style="font-size: small;"></ion-back-button>
     </ion-buttons>
-    <ion-title slot="secondary" class="ion-padding" class="{{bg_color}}">{{titulo}}</ion-title>
+    <ion-title slot="secondary" class="ion-padding" class="bg-red">{{titulo}}</ion-title>
   </ion-toolbar>
   
   <ion-toolbar>
       <!-- <ion-buttons slot="secondary">
         <ion-button id="filtro-button-{{titulo}}">
-          <ion-icon slot="icon-only" name="cog-outline" color="medium"></ion-icon>
+          <ion-icon slot="icon-only" name="cog-outline" color="dark"></ion-icon>
         </ion-button>
       </ion-buttons> -->
       <ion-row class="ion-align-items-center">
@@ -20,7 +20,8 @@
             inputmode="text"
             (search) = "onSearch($event)"
             debounce="250"
-            style="padding: 0px !important;"></ion-searchbar>
+            style="padding: 0px !important;"
+            color="transparente"></ion-searchbar>
         </ion-col>
       </ion-row>
     

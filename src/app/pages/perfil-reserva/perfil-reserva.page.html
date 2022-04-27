@@ -1,7 +1,7 @@
-<app-barra-busqueda titulo = 'Perfil Contacto' bg_color="bg-red"></app-barra-busqueda>
+<app-barra-busqueda titulo = 'Perfil Contacto'></app-barra-busqueda>
 
 
-<ion-content class="ion-padding" color="fondo" fullscreen="true">
+<ion-content class="ion-padding" color="light" fullscreen="true">
   <ion-card *ngIf="perfil">
 
       <ion-item>
@@ -31,8 +31,8 @@
         
         <ion-item>
           <ion-range min="-0" max="5"  [value]="scoreVendedor" snaps="true" ticks="true" [pin]="true" disabled="true">
-            <ion-icon size="small" slot="start" name="star" color="yellow"></ion-icon>
-            <ion-icon slot="end" name="star" color="yellow"></ion-icon>
+            <ion-icon size="small" slot="start" name="star" color="gold"></ion-icon>
+            <ion-icon slot="end" name="star" color="gold"></ion-icon>
           </ion-range>
         </ion-item>
       </ion-card>
@@ -44,8 +44,8 @@
         
         <ion-item>
           <ion-range min="-0" max="5"  [value]="scoreComprador" snaps="true" ticks="true" [pin]="true" disabled="true">
-            <ion-icon size="small" slot="start" name="star" color="yellow"></ion-icon>
-            <ion-icon slot="end" name="star" color="yellow"></ion-icon>
+            <ion-icon size="small" slot="start" name="star" color="gold"></ion-icon>
+            <ion-icon slot="end" name="star" color="gold"></ion-icon>
           </ion-range>
         </ion-item>
       </ion-card>
@@ -54,8 +54,8 @@
   <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col size="12" class="ion-text-center">
-        <ion-button expand ="block" color="light" type="button" routerLink="/dejar-review">
-          <ion-icon slot="start" name="star-half-outline" color="yellow"></ion-icon>
+        <ion-button expand ="block" color="dark" type="button" routerLink="/dejar-review">
+          <ion-icon slot="start" name="star-half-outline" color="gold"></ion-icon>
           Evaluar
         </ion-button>
       </ion-col>
@@ -65,4 +65,4 @@
 </ion-content>
 
 
-<app-menu-navegacion></app-menu-navegacion>
+<app-menu-navegacion seccion="Perfil"></app-menu-navegacion>

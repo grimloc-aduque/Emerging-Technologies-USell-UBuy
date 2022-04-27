@@ -1,32 +1,32 @@
-<app-barra-busqueda titulo = 'Editar Perfil' bg_color="bg-yellow"></app-barra-busqueda>
+<app-barra-busqueda titulo = 'Editar Perfil'></app-barra-busqueda>
 
-<ion-content ion class="ion-padding" color="fondo" fullscreen="true">
+<ion-content ion class="ion-padding" color="light" fullscreen="true">
   <ion-card *ngIf="perfil">
     <form [formGroup] = "editPerfilForm" class="ion-padding" (ngSubmit)="editPerfil()">
       <ion-item class="espacioAbajo">
-        <ion-label position="floating">Nombre<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="floating">Nombre<ion-text color="red">*</ion-text></ion-label>
         <ion-input required type="text" formControlName="nombre" ></ion-input>
       </ion-item>
       <ion-item class="espacioAbajo">
-        <ion-label position="floating">Apellido<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="floating">Apellido<ion-text color="red">*</ion-text></ion-label>
         <ion-input required type="text" formControlName="apellido" ></ion-input>
       </ion-item>
       
       <ion-item class="espacioAbajo">
-        <ion-label position="floating">Número de Celular<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="floating">Número de Celular<ion-text color="red">*</ion-text></ion-label>
         <ion-input required type="tel" maxlength="10"  formControlName="celular"></ion-input>
       </ion-item>
 
       <ion-item class="espacioAbajo">
-        <ion-label position="floating">Carrera<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="floating">Carrera<ion-text color="red">*</ion-text></ion-label>
         <ion-input required type="text" formControlName="carrera"></ion-input>
       </ion-item>
       
       <ion-grid>
         <ion-row class="ion-align-items-center">
           <ion-col size="12" class="ion-text-center">
-            <ion-button expand="block" color="light" routerLink="/mi-perfil" type="submit">
-              <ion-icon slot="start" name="checkmark-circle-outline" color="yellow"></ion-icon>
+            <ion-button expand="block" color="dark" routerLink="/mi-perfil" type="submit">
+              <ion-icon slot="start" name="checkmark-circle-outline" color="gold"></ion-icon>
               Guardar Cambios
             </ion-button>
           </ion-col>
@@ -37,4 +37,4 @@
 
 </ion-content>
 
-<app-menu-navegacion></app-menu-navegacion>
+<app-menu-navegacion seccion="Perfil"></app-menu-navegacion>

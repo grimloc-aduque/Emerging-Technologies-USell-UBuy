@@ -14,18 +14,10 @@ export class TarjetaProductoComponent implements OnInit {
   @Input() opciones: any[];
 
   page: string;
-  color: string;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.page = this.router.url.split('/')[1]
-    if(this.page == 'mis-productos'){
-      this.color = 'red'
-    }
-    if(this.page == 'mis-reservas'){
-      this.color = 'green'
-    }
   }
   
   printRoute(){

@@ -28,24 +28,12 @@
 // Paleta de colores
 
 :root{
-    --blue: #72C4E8;
     --red: #EC5353;
-    --green: #42C686;
-    --yellow: #F3CC60;
 }
 
 //color azul - prueba git
-.bg-blue{
-    background-color: var(--blue) !important;
-}
 .bg-red{
     background-color: var(--red) !important;
-}
-.bg-green{
-    background-color: var(--green) !important;
-}
-.bg-yellow{
-    background-color: var(--yellow) !important;
 }
 
 .centrarTexto{
@@ -66,7 +54,7 @@
 }
 
 .transparente {
-    background: rgba(0, 0, 0, 0.627);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 ion-content{

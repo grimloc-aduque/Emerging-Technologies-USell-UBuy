@@ -10,7 +10,6 @@ import { ModalController } from '@ionic/angular';
 export class BarraBusquedaComponent implements OnInit {
 
   @Input() titulo: string = "";
-  @Input() bg_color: string = "";
 
   constructor( private router: Router) { }
   public busqueda: string;

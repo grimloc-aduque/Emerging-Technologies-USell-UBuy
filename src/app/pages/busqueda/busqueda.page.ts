@@ -30,7 +30,7 @@ export class BusquedaPage implements OnInit {
           product => {
             let full_description = product.nombre + product.descripcion + product.clase;
             full_description = this.cleanString(full_description);
-            console.log('Producto: ', full_description, " - Busqueda: ", this.busqueda)
+            // console.log('Producto: ', full_description, " - Busqueda: ", this.busqueda)
             if(this.busqueda){
               return  product.id_comprador ==null &&
                       full_description.includes(this.busqueda)
