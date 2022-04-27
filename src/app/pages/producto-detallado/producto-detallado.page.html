@@ -1,5 +1,5 @@
-<app-barra-busqueda titulo = 'Producto Detallado' bg_color="bg-blue"></app-barra-busqueda>
-<ion-content *ngIf="producto && vendedor" class="ion-padding">
+<app-barra-busqueda titulo = 'Producto Detallado' bg_color="bg-blue" mode="ios"></app-barra-busqueda>
+<ion-content *ngIf="producto && vendedor" class="ion-padding" color="fondo" fullscreen="true">
   <h2>{{producto.nombre}}</h2>
   <img [src]="producto.url_imagen">
   <ion-row>
