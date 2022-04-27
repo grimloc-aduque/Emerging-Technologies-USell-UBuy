@@ -13,11 +13,17 @@ export class BarraBusquedaComponent implements OnInit {
   @Input() bg_color: string = "";
 
   constructor( private router: Router) { }
+  public busqueda: string;
 
   ngOnInit() {}
 
   closeModal(){
     // this.router.navigate(['/busqueda'])
+  }
+
+  onSearch(evento){
+    // console.log(evento.target.value)
+    this.router.navigate(['/busqueda', evento.target.value]);
   }
 
 }
