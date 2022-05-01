@@ -7,21 +7,20 @@
 
 
 <ion-content color="light" fullscreen="true">
-  <form class="ion-padding">
+  <form [formGroup] = "loginForm" class="ion-padding" (ngSubmit)="logIn()">
     <ion-item class="bordeRedondeado espacioAbajo">
       <ion-label position="floating">Correo Electrónico<ion-text color="red">*</ion-text></ion-label>
-      <ion-input required type="email"></ion-input>
+      <ion-input required type="email" formControlName="email"></ion-input>
     </ion-item>
     <ion-item class="bordeRedondeado">
       <ion-label position="floating">Contraseña<ion-text color="red">*</ion-text></ion-label>
-      <ion-input required type="password"></ion-input>
+      <ion-input required type="password" formControlName="password"></ion-input>
     </ion-item>
-  </form>
 
     <ion-grid>
       <ion-row class="ion-align-items-center">
         <ion-col size="12" class="ion-text-center">
-          <ion-button expand="block" color="dark" type="button" routerLink="/busqueda">
+          <ion-button expand="block" color="dark" type="submit">
             Iniciar sesión
           </ion-button>
         </ion-col>
@@ -32,5 +31,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-
+  </form>
 </ion-content>

@@ -11,7 +11,7 @@
   <ion-row style=" height: 90%;" class="ion-align-items-center">
     <ion-col size="12">
 
-      <form [formGroup] = "newUserForm" class="ion-padding" (ngSubmit)="createUser()">
+      <form [formGroup] = "newUserForm" class="ion-padding" (ngSubmit)="signUp()">
         <ion-item class="bordeRedondeado espacioAbajo">
           <ion-label position="floating">Nombre<ion-text color="red">*</ion-text></ion-label>
           <ion-input required type="text" formControlName="nombre"></ion-input>
@@ -26,7 +26,7 @@
         </ion-item>
         <ion-item class="bordeRedondeado espacioAbajo">
           <ion-label position="floating">Correo Universitario<ion-text color="red">*</ion-text></ion-label>
-          <ion-input required type="email" formControlName="correo"></ion-input>
+          <ion-input required type="email" formControlName="email"></ion-input>
         </ion-item>
         <ion-item class="bordeRedondeado espacioAbajo">
           <ion-label position="floating">Carrera<ion-text color="red">*</ion-text></ion-label>

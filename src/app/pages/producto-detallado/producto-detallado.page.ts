@@ -40,7 +40,7 @@ export class ProductoDetalladoPage implements OnInit {
     this.dataService.getProductoById(this.id_producto).subscribe(
       result => {
         this.producto = result.data();
-        this.producto._id = this.id_producto;
+        this.producto.uid = this.id_producto;
         this.getUsuario();
       }
     )

@@ -2,10 +2,10 @@
   <ion-card-content>
     <ion-grid fixed>
       <ion-row>
-        <ion-col size="4" (click) ="onClickCard(producto._id)">
+        <ion-col size="4" (click) ="onClickCard(producto.uid)">
           <img [src]="producto.url_imagen">
         </ion-col>
-        <ion-col [size]="page!='busqueda'? '7': '8'" (click) ='onClickCard(producto._id)'>
+        <ion-col [size]="page!='busqueda'? '7': '8'" (click) ='onClickCard(producto.uid)'>
           <h1> {{producto.nombre}} </h1>
           <h2> {{producto.clase}} - ${{producto.precio}} </h2>
           <hr>
@@ -14,15 +14,14 @@
 
         <ion-col size="1" *ngIf="page!='busqueda'">
           <ion-buttons>
-            <ion-button id="opciones-btn-{{page}}-{{producto._id}}">
+            <ion-button id="opciones-btn-{{page}}-{{producto.uid}}">
               <ion-icon slot="icon-only" name="ellipsis-vertical-outline" color="dark"></ion-icon>
 
-              <ion-popover trigger="opciones-btn-{{page}}-{{producto._id}}">
+              <ion-popover trigger="opciones-btn-{{page}}-{{producto.uid}}">
                 <ng-template>
                   <ion-list>
                     <ng-container *ngFor="let opcion of opciones">
                       <ion-item *ngIf="opcion.show(producto)">
-                        <!-- <ion-label (click)="printRoute()"> -->
                         <ion-label (click)="opcion.handler(producto)">
                           <ion-text color="dark">
                             {{opcion.nombre}}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Producto } from 'src/app/interfaces/producto';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DataService } from 'src/app/services/data.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -12,7 +13,7 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class MisProductosPage implements OnInit {
   
-  private id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+  private id_sesion = this.authService.sessionId
 
   productos: Producto[] = []
 
@@ -20,7 +21,7 @@ export class MisProductosPage implements OnInit {
     {
       nombre: 'Editar',
       handler: (producto: Producto) => {
-        this.router.navigate(['/crear-editar-producto', producto._id]);
+        this.router.navigate(['/crear-editar-producto', producto.uid]);
       },
       show: (producto) => true
     },
@@ -44,7 +45,8 @@ export class MisProductosPage implements OnInit {
   constructor(
     private router: Router, 
     private dataService: DataService,
-    private toastService: ToastService) { }
+    private toastService: ToastService,
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.dataService.getProductos().subscribe(

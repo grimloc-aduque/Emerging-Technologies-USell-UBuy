@@ -13,9 +13,9 @@ export class TarjetaProductoComponent implements OnInit {
   @Input() onClickCard: Function;
   @Input() opciones: any[];
 
-  page: string;
+  page: string = this.router.url.split('/')[1];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }

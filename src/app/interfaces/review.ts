@@ -1,5 +1,5 @@
 export interface Review {
-    _id: String,
+    uid: String,
     calificacion: number,
     comentario: String,
     fecha: String[],

@@ -2,7 +2,7 @@
 
 
 <ion-content class="ion-padding" color="light" fullscreen="true">
-  <ion-card *ngIf="reviews.length != 0 && vendedor">
+  <ion-card *ngIf="vendedor">
       <ion-item>
         <ion-label class="centrarTexto">{{vendedor.nombre}} {{vendedor.apellido}}</ion-label>
       </ion-item>
@@ -21,7 +21,7 @@
       </ion-card>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="reviews.length != 0 && vendedor">
     <ion-item>
       <ion-label >Comentarios</ion-label>
     </ion-item>

@@ -5,6 +5,7 @@ import {Router} from "@angular/router"
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { DataService } from 'src/app/services/data.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -13,7 +14,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class EditarPerfilPage implements OnInit {
 
-  private id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+  private id_sesion = this.authService.sessionId
   perfil: Usuario;
 
   editPerfilForm: FormGroup;
@@ -23,7 +24,8 @@ export class EditarPerfilPage implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder, 
     private fireStore: AngularFirestore, 
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
     ) { }
 
   ngOnInit() {
@@ -32,13 +34,8 @@ export class EditarPerfilPage implements OnInit {
       apellido: '',
       celular: '',
       carrera: '',
-
-      correo: '',
+      email: '',
       password: '',
-      productos_ofertados: [],
-      productos_reservados: [],
-      reviews_comprador: [],
-      reviews_vendedor: [],
     }); 
 
     this.dataService.getUsuarioById(this.id_sesion).subscribe(
@@ -49,12 +46,7 @@ export class EditarPerfilPage implements OnInit {
         this.editPerfilForm.get('celular').setValue(this.perfil.celular);
         this.editPerfilForm.get('carrera').setValue(this.perfil.carrera);
 
-        this.editPerfilForm.get('correo').setValue(this.perfil.correo);
-        this.editPerfilForm.get('password').setValue(this.perfil.password);
-        this.editPerfilForm.get('productos_ofertados').setValue(this.perfil.productos_ofertados);
-        this.editPerfilForm.get('productos_reservados').setValue(this.perfil.productos_reservados);
-        this.editPerfilForm.get('reviews_comprador').setValue(this.perfil.reviews_comprador);
-        this.editPerfilForm.get('reviews_vendedor').setValue(this.perfil.reviews_vendedor);
+        this.editPerfilForm.get('email').setValue(this.perfil.email);
 
         console.log('perfil: ', this.perfil);
       }

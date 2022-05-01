@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Producto } from '../interfaces/producto';
 import { Usuario } from '../interfaces/usuario';
 import { Review } from '../interfaces/review';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,13 @@ export class DataService {
   reviewsRef = this.firestore.collection<Review>('reviews');
 
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) { }
+  constructor(
+    private http: HttpClient, 
+    private firestore: AngularFirestore, 
+    private authService: AuthenticationService) { }
 
   getProductos(){
-    return this.productosRef.valueChanges({idField: '_id'});
+    return this.productosRef.valueChanges({idField: 'uid'});
   }
 
   getProductoById(id){
@@ -28,7 +32,7 @@ export class DataService {
   }
 
   getUsuarios(){
-    return this.usuariosRef.valueChanges({idField: '_id'});
+    return this.usuariosRef.valueChanges({idField: 'uid'});
   }
 
   getUsuarioById(id){
@@ -36,7 +40,7 @@ export class DataService {
   }
 
   getReviews(){
-    return this.reviewsRef.valueChanges({idField: '_id'});
+    return this.reviewsRef.valueChanges({idField: 'uid'});
   }
 
   getReviewById(id){
@@ -49,16 +53,16 @@ export class DataService {
 
 
   deleteProductoVendedor(producto: Producto){
-    this.productosRef.doc(producto._id).delete();
+    this.productosRef.doc(producto.uid).delete();
   }
 
   deleteProductoComprador(producto: Producto){
-    this.update('productos',  producto._id, producto)
+    this.update('productos',  producto.uid, producto)
   }
 
   reservarProducto(producto:Producto){
-    const id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+    const id_sesion = this.authService.sessionId
     producto.id_comprador = id_sesion
-    this.update('productos', producto._id, producto);
+    this.update('productos', producto.uid, producto);
   }
 }

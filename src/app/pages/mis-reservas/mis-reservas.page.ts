@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DataService } from 'src/app/services/data.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -12,7 +13,7 @@ import { ToastService } from 'src/app/services/toast.service';
 
 export class MisReservasPage implements OnInit {
 
-  private id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+  private id_sesion = this.authService.sessionId
 
   productos: Producto[] = []
 
@@ -39,7 +40,8 @@ export class MisReservasPage implements OnInit {
   constructor( 
     private router: Router, 
     private dataService: DataService,
-    private toastService: ToastService) { }
+    private toastService: ToastService,
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.productos = []

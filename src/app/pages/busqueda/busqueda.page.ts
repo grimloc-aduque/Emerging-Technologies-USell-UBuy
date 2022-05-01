@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Navigation, Router} from "@angular/router"
 import { Producto } from 'src/app/interfaces/producto';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DataService } from 'src/app/services/data.service';
 import { FiltroService } from 'src/app/services/filtro.service';
 
@@ -12,6 +13,7 @@ import { FiltroService } from 'src/app/services/filtro.service';
 
 export class BusquedaPage implements OnInit {
 
+  id_sesion = this.authService.sessionId;
   filtro: Object = null;
   busqueda: string = null;
   productos: Producto[] = []
@@ -20,7 +22,8 @@ export class BusquedaPage implements OnInit {
     private router: Router, 
     private route: ActivatedRoute, 
     private dataService: DataService,
-    private filtroService: FiltroService
+    private filtroService: FiltroService,
+    private authService: AuthenticationService
     ) { }
 
   ngOnInit() {
@@ -54,13 +57,16 @@ export class BusquedaPage implements OnInit {
       result => { 
         this.productos = result.filter(
           prod => {
+            if(prod.id_vendedor === this.id_sesion){
+              return false;
+            }
             let full_description = prod.nombre + prod.descripcion + prod.clase + prod.tipo;
             full_description = this.cleanString(full_description);
             if(this.busqueda){
               return  prod.id_comprador ==null &&
-                      full_description.includes(this.busqueda)
+                      full_description.includes(this.busqueda);
             }
-            return prod.id_comprador == null
+            return prod.id_comprador == null;
           }
         )
       }

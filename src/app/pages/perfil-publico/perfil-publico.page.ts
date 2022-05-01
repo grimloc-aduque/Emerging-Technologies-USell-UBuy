@@ -26,7 +26,6 @@ export class PerfilPublicoPage implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         this.id_vendedor = params.get('id_vendedor')
-        console.log(this.id_vendedor)
         this.getVendedor();
       }
     )
@@ -36,6 +35,7 @@ export class PerfilPublicoPage implements OnInit {
     this.dataService.getUsuarioById(this.id_vendedor).subscribe(
       result => {
         this.vendedor = result.data();
+        console.log(result.data())
         this.getReviews();
       }
     )

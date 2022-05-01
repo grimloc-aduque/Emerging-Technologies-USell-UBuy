@@ -1,6 +1,6 @@
 [
     {
-      "_id": "1",
+      "uid": "1",
       "nombre": "Calculo de Stewart 1",
       "descripcion": "Libro de calculo para ingenierias",
       "tipo": "Libro de Texto",
@@ -12,7 +12,7 @@
       "id_comprador": "2"
     },
     {
-      "_id": "2",
+      "uid": "2",
       "nombre": "Calculo de Stewart 2",
       "descripcion": "Libro de calculo para ingenierias",
       "tipo": "Libro de Texto",
@@ -24,7 +24,7 @@
       "id_comprador": "2"
     },
     {
-      "_id": "3",
+      "uid": "3",
       "nombre": "Calculo de Stewart 3",
       "descripcion": "Libro de calculo para ingenierias",
       "tipo": "Libro de Texto",
@@ -36,7 +36,7 @@
       "id_comprador": "2"
     },
     {
-      "_id": "4",
+      "uid": "4",
       "nombre": "Calculo de Stewart 4",
       "descripcion": "Libro de calculo para ingenierias",
       "tipo": "Libro de Texto",

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {Router} from "@angular/router"
 import { timeStamp } from 'console';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-dejar-review',
@@ -13,7 +14,7 @@ export class DejarReviewPage implements OnInit {
 
   reviewForm: FormGroup;
 
-  private id_comprador = 'Jla5t7VTwHQ7iRczUBFB'
+  private id_comprador = this.authService.sessionId
   private id_vendedor = '7LlbWxXaePqayFUc00ID'
   private id_producto = 'SPgWCa0tBo6u2ZWHx9dw'
 
@@ -22,7 +23,8 @@ export class DejarReviewPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private fireStore: AngularFirestore, 
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit() {

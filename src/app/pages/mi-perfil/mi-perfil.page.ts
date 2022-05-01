@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Review } from 'src/app/interfaces/review';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -11,14 +12,17 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class MiPerfilPage implements OnInit {
 
-  private id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+  private id_sesion = this.authService.sessionId
   perfil: Usuario;
   reviewsVendedor: Review[] = [];
   scoreVendedor: number = 0;
   reviewsComprador: Review[] = [];
   scoreComprador: number = 0;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) { }
+  constructor(
+    private dataService: DataService, 
+    private route: ActivatedRoute,
+    public authService: AuthenticationService) { }
 
   ngOnInit() {
     this.getUsuario();
@@ -54,6 +58,10 @@ export class MiPerfilPage implements OnInit {
         this.scoreComprador = this.scoreComprador/this.reviewsComprador.length;
       }
     )
+  }
+
+  cerrarSesion(){
+
   }
 
 }

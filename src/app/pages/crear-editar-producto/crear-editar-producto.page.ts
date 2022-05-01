@@ -7,6 +7,7 @@ import { DataService } from 'src/app/services/data.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {Router} from "@angular/router"
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-crear-editar-producto',
@@ -15,14 +16,14 @@ import {Router} from "@angular/router"
 })
 export class CrearEditarProductoPage implements OnInit {
 
-  private id_sesion = 'Jla5t7VTwHQ7iRczUBFB'
+  private id_sesion = this.authService.sessionId
   private editing: Boolean;
   productForm: FormGroup;
 
   
   id_producto: String;
   producto: Producto ={
-    _id: '',
+    uid: '',
     nombre: '',
     descripcion: '',
     tipo: '',
@@ -40,7 +41,8 @@ export class CrearEditarProductoPage implements OnInit {
     private dataService: DataService,
     private formBuilder: FormBuilder, 
     private fireStore: AngularFirestore, 
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) {}
 
 

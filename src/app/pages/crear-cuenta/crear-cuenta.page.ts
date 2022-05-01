@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {Router} from "@angular/router"
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class CrearCuentaPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private fireStore: AngularFirestore, 
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService,
   ) {}
 
   ngOnInit() {
@@ -24,35 +26,24 @@ export class CrearCuentaPage implements OnInit {
       nombre: '',
       apellido: '',
       celular: '',
-      correo: '', 
+      email: '', 
       carrera: '',
       password: ''
     })
   }
 
-  createUser(){
-    const formData = this.newUserForm.value;
-    formData['productos_ofertados'] = [];
-    formData['productos_reservados'] = [];
-    formData['reviews_comprador'] = [];
-    formData['reviews_vendedor'] = [];
 
-    this.fireStore.collection('usuarios')
-      .add(
-        formData
-      )
-      .then(
-        res => {
-          console.log(res);
-          this.router.navigate(['/inicio']);
-        }
-      )
-      .catch(
-        e => {
-          console.log(e)
-        }
-      )
-    console.log(formData)
-  }
+  signUp(){
+    let formData = this.newUserForm.value;
+    this.authService.RegisterUser(formData.email, formData.password)      
+    .then((res) => {
+      delete formData.password
+      let uid = res.user.multiFactor['user']['uid']
+      this.fireStore.collection('usuarios').doc(uid).set(formData)
+      this.authService.SendVerificationMail()
+    }).catch((error) => {
+      console.log(error.message)
+    })
+}
 
 }
