@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from 'src/app/services/data.service'; 
 
 // Forms
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -9,12 +9,17 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {Router} from "@angular/router"
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
+import { Camera } from '@ionic-native/camera/ngx';
+
 @Component({
   selector: 'app-crear-editar-producto',
   templateUrl: './crear-editar-producto.page.html',
   styleUrls: ['./crear-editar-producto.page.scss'],
 })
 export class CrearEditarProductoPage implements OnInit {
+  image: any;
+
+  url: string;
 
   private id_sesion = this.authService.sessionId
   private editing: Boolean;
@@ -42,7 +47,8 @@ export class CrearEditarProductoPage implements OnInit {
     private formBuilder: FormBuilder, 
     private fireStore: AngularFirestore, 
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    public camera: Camera,
   ) {}
 
 
@@ -104,7 +110,8 @@ export class CrearEditarProductoPage implements OnInit {
 
   createProduct(){
     const formData = this.productForm.value;
-    formData['url_imagen'] = 'https://1.bp.blogspot.com/-6MTxuinGnq4/YAdpsbm-azI/AAAAAAAANp8/V939GxHEYYM1Nm9NByaGT-obPoO8WhJbACLcBGAsYHQ/s1022/calculo-de-una-variable-trascendentes-tempranas-7ma-edicion-james-stewart-freelibros.jpg'
+    //formData['url_imagen'] = 'https://1.bp.blogspot.com/-6MTxuinGnq4/YAdpsbm-azI/AAAAAAAANp8/V939GxHEYYM1Nm9NByaGT-obPoO8WhJbACLcBGAsYHQ/s1022/calculo-de-una-variable-trascendentes-tempranas-7ma-edicion-james-stewart-freelibros.jpg'
+    formData['url_imagen'] = this.url
     formData['id_vendedor'] = this.id_sesion
     formData['id_comprador'] = null
     this.fireStore.collection('productos').add(formData).then(
@@ -114,5 +121,54 @@ export class CrearEditarProductoPage implements OnInit {
         }
       )
   }
+
+  usarCamara(){
+    console.log("camara");
+    this.camera.getPicture({
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      mediaType: this.camera.MediaType.PICTURE,
+      allowEdit: false,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetHeight: 1024,
+      targetWidth: 1024,
+      correctOrientation: true,
+      saveToPhotoAlbum: true,
+
+    }).then(resultado =>{
+      this.image = "data:image/jpeg;base64," + resultado;
+
+      this.image = "data:image/jpeg;base64," + resultado;
+      console.log("image: ", this.image);
+      this.url = this.image;
+
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
+  abrirGaleria(){
+    console.log("galeria");
+    this.camera.getPicture({
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      mediaType: this.camera.MediaType.PICTURE,
+      allowEdit: false,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetHeight: 1024,
+      targetWidth: 1024,
+      correctOrientation: true,
+      saveToPhotoAlbum: true,
+
+    }).then(resultado =>{
+      this.image = "data:image/jpeg;base64," + resultado;
+      console.log("image: ", this.image);
+      this.url = this.image;
+
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
 
 }

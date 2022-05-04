@@ -43,22 +43,24 @@
       </ion-row>
     </ion-grid>
     <ion-item>
-      <ion-label>Imagenes</ion-label>
+      <ion-label>Imagen</ion-label>
     </ion-item>
     <ion-grid>
       <ion-row class="ion-align-items-center">
         <ion-col size="12" class="ion-text-center">
-          <ion-button expand='block' color="dark" type="button">
+          <ion-button expand='block' color="dark" type="button" (click)="abrirGaleria()">
             Cargar desde la galería
           </ion-button>
         </ion-col>
         <ion-col size="12" class="ion-text-center">
-          <ion-button expand='block' color="dark" type="button">
-            Tomar fotos ahora
+          <ion-button expand='block' color="dark" type="button" (click)="usarCamara()">
+            Tomar foto ahora
           </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
+
+    <img [src]="image" *ngIf="image" />
 
     <ion-grid>
       <ion-row class="ion-align-items-center">
