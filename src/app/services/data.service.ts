@@ -60,9 +60,4 @@ export class DataService {
     this.update('productos',  producto.uid, producto)
   }
 
-  reservarProducto(producto:Producto){
-    const id_sesion = this.authService.sessionId
-    producto.id_comprador = id_sesion
-    this.update('productos', producto.uid, producto);
-  }
 }

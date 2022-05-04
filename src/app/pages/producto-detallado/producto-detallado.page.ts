@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DataService } from 'src/app/services/data.service';
+import { PushService } from 'src/app/services/push.service';
 
 @Component({
   selector: 'app-producto-detallado',
@@ -20,7 +22,9 @@ export class ProductoDetalladoPage implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService,
+    private pushService: PushService
     ) { }
 
   ngOnInit() {
@@ -56,7 +60,10 @@ export class ProductoDetalladoPage implements OnInit {
   }
 
   clickReservar(){
-    this.dataService.reservarProducto(this.producto);
+    const id_sesion = this.authService.sessionId
+    this.producto.id_comprador = id_sesion
+    this.dataService.update('productos', this.producto.uid, this.producto);
+    this.pushService.enviarNotificacionReserva(this.producto);
     this.router.navigateByUrl('/mis-reservas');
   }
 

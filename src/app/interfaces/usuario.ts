@@ -8,4 +8,5 @@ export interface Usuario {
     celular: String;
     carrera: String;
     email: String;
+    push_id?: String;
 }
