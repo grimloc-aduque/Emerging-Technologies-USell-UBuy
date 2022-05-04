@@ -19,7 +19,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 export class CrearEditarProductoPage implements OnInit {
   image: any;
 
-  url: string;
+  url: string = null;
 
   private id_sesion = this.authService.sessionId
   private editing: Boolean;
@@ -100,7 +100,13 @@ export class CrearEditarProductoPage implements OnInit {
 
   updateProduct(){
     const formData = this.productForm.value;
-    formData['url_imagen'] = this.producto.url_imagen
+    if(!this.url){
+      formData['url_imagen'] = this.producto.url_imagen
+    }
+    else{
+      formData['url_imagen'] = this.url
+    }
+    
     formData['id_vendedor'] = this.producto.id_vendedor
     formData['id_comprador'] = this.producto.id_comprador
 
