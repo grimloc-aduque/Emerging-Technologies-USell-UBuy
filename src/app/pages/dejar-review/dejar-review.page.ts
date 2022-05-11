@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import {Router} from "@angular/router"
+import {Router, ActivatedRoute} from "@angular/router"
 import { timeStamp } from 'console';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { DataService } from 'src/app/services/data.service';
+import { Producto } from 'src/app/interfaces/producto';
 
 @Component({
   selector: 'app-dejar-review',
@@ -14,9 +16,8 @@ export class DejarReviewPage implements OnInit {
 
   reviewForm: FormGroup;
 
-  private id_comprador = this.authService.sessionId
-  private id_vendedor = '7LlbWxXaePqayFUc00ID'
-  private id_producto = 'SPgWCa0tBo6u2ZWHx9dw'
+  private id_producto: string;
+  producto: Producto;
 
   private date: Date = new Date();  
 
@@ -24,7 +25,10 @@ export class DejarReviewPage implements OnInit {
     private formBuilder: FormBuilder, 
     private fireStore: AngularFirestore, 
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+
+    private route: ActivatedRoute,
+    private dataService: DataService,
   ) { }
 
   ngOnInit() {
@@ -32,14 +36,16 @@ export class DejarReviewPage implements OnInit {
       calificacion: '',
       comentario: ''
     })
+
+    this.recuperarIdProducto();
   }
   
   sendReview(){
     const formData = this.reviewForm.value;
     formData['fecha'] = this.date;
     formData['id_producto'] = this.id_producto;
-    formData['id_comprador'] = this.id_comprador;
-    formData['id_vendedor'] = this.id_vendedor;
+    formData['id_comprador'] = this.producto.id_comprador;
+    formData['id_vendedor'] = this.producto.id_vendedor;
 
     this.fireStore.collection('reviews')
       .add(
@@ -59,4 +65,25 @@ export class DejarReviewPage implements OnInit {
     console.log(formData)
   }
 
+  recuperarIdProducto(){
+    this.route.paramMap.subscribe(
+      params => {
+        this.id_producto = params.get('id_producto');
+        this.getProducto();
+      }
+    )
+  }
+
+  getProducto(){
+    this.dataService.getProductoById(this.id_producto).subscribe(
+      result => {
+        this.producto = result.data();
+        this.producto.uid = this.id_producto;
+        console.log("id", this.id_producto);
+
+        console.log("id comprador", this.producto.id_comprador);
+        console.log("id vendedor", this.producto.id_vendedor);
+      }
+    )
+  }
 }

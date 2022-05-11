@@ -21,7 +21,8 @@ export class MisReservasPage implements OnInit {
     {
       nombre: 'Ver Vendedor',
       handler: (producto: Producto) => {
-        this.router.navigate(['/perfil-reserva', producto.id_vendedor]);
+
+        this.router.navigate(['/perfil-reserva', producto.id_vendedor, producto.uid]);
       },
       show: (producto) => true
     },

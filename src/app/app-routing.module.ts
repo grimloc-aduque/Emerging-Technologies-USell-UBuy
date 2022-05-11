@@ -60,11 +60,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/perfil-reserva/perfil-reserva.module').then( m => m.PerfilReservaPageModule)
   },
   {
-    path: 'perfil-reserva/:id_usuario',
+    path: 'perfil-reserva/:id_usuario/:id_producto',
     loadChildren: () => import('./pages/perfil-reserva/perfil-reserva.module').then( m => m.PerfilReservaPageModule)
   },
   {
-    path: 'dejar-review',
+    path: 'dejar-review/:id_producto',
     loadChildren: () => import('./pages/dejar-review/dejar-review.module').then( m => m.DejarReviewPageModule)
   }
 

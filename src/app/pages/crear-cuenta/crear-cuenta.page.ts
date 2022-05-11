@@ -24,6 +24,8 @@ export class CrearCuentaPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.pushService.obtenerUsuario();
+
     this.newUserForm = this.formBuilder.group({
       nombre: '',
       apellido: '',
