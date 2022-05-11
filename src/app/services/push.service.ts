@@ -96,7 +96,8 @@ export class PushService {
   notificacionRecibida(noti:OpenedEvent){
     console.log(noti)
     const id_comprador = noti.notification.additionalData['id_comprador']
-    this.router.navigate(['/perfil-reserva', id_comprador]);
+    const id_producto = noti.notification.additionalData['id_producto']
+    this.router.navigateByUrl(`/perfil-reserva/${id_comprador}/${id_producto}`);
   }
 
 }
