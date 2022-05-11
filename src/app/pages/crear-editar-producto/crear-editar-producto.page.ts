@@ -116,7 +116,6 @@ export class CrearEditarProductoPage implements OnInit {
 
   createProduct(){
     const formData = this.productForm.value;
-    //formData['url_imagen'] = 'https://1.bp.blogspot.com/-6MTxuinGnq4/YAdpsbm-azI/AAAAAAAANp8/V939GxHEYYM1Nm9NByaGT-obPoO8WhJbACLcBGAsYHQ/s1022/calculo-de-una-variable-trascendentes-tempranas-7ma-edicion-james-stewart-freelibros.jpg'
     formData['url_imagen'] = this.url
     formData['id_vendedor'] = this.id_sesion
     formData['id_comprador'] = null
@@ -142,8 +141,6 @@ export class CrearEditarProductoPage implements OnInit {
       saveToPhotoAlbum: true,
 
     }).then(resultado =>{
-      this.image = "data:image/jpeg;base64," + resultado;
-
       this.image = "data:image/jpeg;base64," + resultado;
       console.log("image: ", this.image);
       this.url = this.image;
@@ -175,6 +172,4 @@ export class CrearEditarProductoPage implements OnInit {
       console.log(error);
     })
   }
-
-
 }

@@ -18,10 +18,17 @@ export class PerfilReservaPage implements OnInit {
   reviewsComprador: Review[] = [];
   scoreComprador: number = 0;
 
+  private id_producto: string;
+
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.recuperarIdUsuario();
+
+    let id = this.route.snapshot.paramMap.get('id_producto');
+    console.log("id:", id);
+    this.id_producto = id;
+    console.log("id_producto:", this.id_producto);
   }
 
   recuperarIdUsuario(){
@@ -69,6 +76,12 @@ export class PerfilReservaPage implements OnInit {
         this.scoreComprador = this.scoreComprador/this.reviewsComprador.length
       }
     )
+  }
+
+  evaluar(){
+    console.log(this.id_producto)
+    
+    this.router.navigate(['dejar-review', this.id_producto]);
   }
 
 }

@@ -46,14 +46,13 @@ export class PushService {
     OneSignal.promptForPushNotificationsWithUserResponse((noti) => {
       console.log('Notificacion abierta en IOS', noti);
     });
-
-    this.obtenerUsuario();
   }
 
   obtenerUsuario(){
     OneSignal.getDeviceState(
       (respuesta:DeviceState) => {
         this.userId = respuesta.userId;
+        console.log(respuesta);
         console.log('Dispositivo: ', this.userId)
       }
     )
