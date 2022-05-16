@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {Router} from "@angular/router"
-import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { DataService } from 'src/app/services/data.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -21,9 +19,7 @@ export class EditarPerfilPage implements OnInit {
 
   constructor(
     private dataService: DataService, 
-    private route: ActivatedRoute,
     private formBuilder: FormBuilder, 
-    private fireStore: AngularFirestore, 
     private router: Router,
     private authService: AuthenticationService
     ) { }
@@ -35,7 +31,7 @@ export class EditarPerfilPage implements OnInit {
       celular: '',
       carrera: '',
       email: '',
-      password: '',
+      push_id: ''
     }); 
 
     this.dataService.getUsuarioById(this.id_sesion).subscribe(
@@ -45,9 +41,8 @@ export class EditarPerfilPage implements OnInit {
         this.editPerfilForm.get('apellido').setValue(this.perfil.apellido);
         this.editPerfilForm.get('celular').setValue(this.perfil.celular);
         this.editPerfilForm.get('carrera').setValue(this.perfil.carrera);
-
         this.editPerfilForm.get('email').setValue(this.perfil.email);
-
+        this.editPerfilForm.get('push_id').setValue(this.perfil.push_id);
         console.log('perfil: ', this.perfil);
       }
     )

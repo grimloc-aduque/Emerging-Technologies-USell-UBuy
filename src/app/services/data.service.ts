@@ -7,7 +7,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Producto } from '../interfaces/producto';
 import { Usuario } from '../interfaces/usuario';
 import { Review } from '../interfaces/review';
-import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +19,7 @@ export class DataService {
 
   constructor(
     private http: HttpClient, 
-    private firestore: AngularFirestore, 
-    private authService: AuthenticationService) { }
+    private firestore: AngularFirestore) { }
 
   getProductos(){
     return this.productosRef.valueChanges({idField: 'uid'});

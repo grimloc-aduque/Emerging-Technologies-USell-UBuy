@@ -1,69 +1,133 @@
 import { Injectable, NgZone } from '@angular/core';
-import * as auth from 'firebase/auth';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AlertController } from '@ionic/angular';
 import {
   AngularFirestore,
-  AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import { PushService } from './push.service';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class AuthenticationService {
-  userSession;
+  userSession = null;
   sessionId: string;
+  isEmailVerified: boolean;
+
   constructor(
-    public afStore: AngularFirestore,
-    public ngFireAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    public alertController: AlertController,
+    private pushService: PushService,
+    public fireAuth: AngularFireAuth,
+    private fireStore: AngularFirestore
   ) {
-    if(localStorage.getItem('user')){
-      this.sessionId = JSON.parse(localStorage.getItem('user'))['uid'];
-    }
-    this.ngFireAuth.authState.subscribe((user) => {
+    this.fireAuth.authState.subscribe((user) => {
       if (user) {
+        console.log('Auth State Change')
         this.userSession = user;
-        localStorage.setItem('user', JSON.stringify(this.userSession));
         this.sessionId = user.uid
-      } else {
-        localStorage.setItem('user', null);
+        this.isEmailVerified = user.emailVerified
       }
     });
   }
-  // Login in with email/password
-  SignIn(email, password) {
-    return this.ngFireAuth.signInWithEmailAndPassword(email, password);
-  }
+
   // Register user with email/password
-  RegisterUser(email, password) {
-    return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
+  RegisterUser(userForm) {
+    this.pushService.obtenerUsuario();
+    this.fireAuth.createUserWithEmailAndPassword(userForm.email, userForm.password).then((res) => {
+      delete userForm.password
+      let uid = res.user.multiFactor['user']['uid']
+      let push_id = this.pushService.userId
+      if(push_id){
+        userForm['push_id'] = push_id
+      }else{
+        userForm['push_id'] = null
+      }
+      this.fireStore.collection('usuarios').doc(uid).set(userForm);
+      this.SendVerificationMail();
+    }).catch((error) => {
+      console.log(error.message)
+    });
   }
+
   // Email verification when new user register
   SendVerificationMail() {
-    return this.ngFireAuth.currentUser.then((user) => {
-      return user.sendEmailVerification().then(() => {
-        this.router.navigate(['inicio']);
+    this.fireAuth.currentUser.then((user) => {
+      user.sendEmailVerification().then(async() => {
+        this.showEmailSentAlert()
       });
     });
   }
-  // Returns true when user is looged in
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null && user.emailVerified !== false ? true : false;
+
+  // Login in with email/password
+  SignIn(email, password) {
+    this.fireAuth.signInWithEmailAndPassword(email, password)
+      .then(async (res) => {
+        const user = res.user;
+        if(user) {
+          this.userSession = user;
+          this.sessionId = user.uid;
+          this.isEmailVerified = user.emailVerified
+          if(this.isEmailVerified){
+            this.router.navigate(['busqueda']);  
+          }
+          else {
+            this.showNotVerifiedAlert();
+          }
+        }else{
+          this.showInvalidCredentialsAlert();
+        }
+      })
+      .catch(async (error) => {
+        this.showInvalidCredentialsAlert();
+        console.log(error.message);
+      });
   }
-  // Returns true when user's email is verified
-  get isEmailVerified(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user.emailVerified !== false ? true : false;
-  }
+
   // Sign-out
   SignOut() {
-    return this.ngFireAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+    return this.fireAuth.signOut().then(() => {
       this.router.navigate(['inicio']);
     });
   }
+
+  // Alerts
+
+  async showEmailSentAlert(){
+    const alert = await this.alertController.create({
+      header: 'Valide su cuenta',
+      message: 'Se envio un email para validar su cuenta',
+      buttons: [{
+        text: 'OK',
+        role: 'cancel',
+        handler: () => {
+          this.router.navigate(['inicio']);
+        }
+      }]
+    });
+    alert.present();
+  }
+
+  async showNotVerifiedAlert(){
+    const alert = await this.alertController.create({
+      header: 'Cuenta no verificada',
+      message: 'Revise en su correo electronico el mail de verificacion de cuenta',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  async showInvalidCredentialsAlert(){
+    const alert = await this.alertController.create({
+      header: 'Cuenta no valida',
+      message: 'Email o contraseña incorrectos',
+      buttons: ['OK']
+    });
+    await alert.present();
+
+  }
+
 }

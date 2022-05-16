@@ -18,10 +18,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Clase donde lo usaste</ion-label>
-      <ion-select formControlName="clase">
-        <ion-select-option value="Calculo 1">Calculo 1</ion-select-option>
-        <ion-select-option value="Calculo 2">Calculo 2</ion-select-option>
-      </ion-select>
+      <ion-input required type="text" formControlName="clase" [value]="producto.clase"></ion-input>
     </ion-item>
     <ion-grid fixed>
       <ion-row>

@@ -19,13 +19,6 @@ export class PushService {
     private router: Router) { }
 
   userId: string
-  mensajes: any[] = [
-    {
-      title: 'Titulo',
-      body: 'Mensaje',
-      additionaData: new Date()
-    }
-  ]
 
   // Call this function when your app starts
   configInicial(){
@@ -65,18 +58,10 @@ export class PushService {
       vendedor => {
         const push_id = vendedor.data().push_id
 
-        const body = { 
-          app_id: "3d313fd5-cdfe-4e50-b4f5-78b6beea8e3d",
-          headings: {"en": "Producto Reservado"},
-          contents: {"en": `Tu producto ${nombre_producto} fue reservado. Ponte en contacto con el interesado para acordar la venta`},
-          include_player_ids: [push_id],
-          data: {"id_producto": producto.uid, "id_comprador": producto.id_comprador}
-        };
-    
         const headers = {
           "Content-Type": "application/json; charset=utf-8"
         }
-        
+
         const options = {
           host: "onesignal.com",
           port: 443,
@@ -85,7 +70,14 @@ export class PushService {
           headers: headers
         };
 
-        // console.log('Push:', body, options)
+        const body = { 
+          app_id: "3d313fd5-cdfe-4e50-b4f5-78b6beea8e3d",
+          headings: {"en": "Producto Reservado"},
+          contents: {"en": `Tu producto ${nombre_producto} fue reservado. Ponte en contacto con el interesado para acordar la venta`},
+          include_player_ids: [push_id],
+          data: {"id_producto": producto.uid, "id_comprador": producto.id_comprador}
+        };
+    
         this.http.post('https://onesignal.com/api/v1/notifications', body, options).subscribe(
           res => console.log(res)
         );
