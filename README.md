@@ -14,7 +14,8 @@ Backends: Firebase
   * Cloud Firestore
   
 Publication: Google Play
-* https://play.google.com/store/apps/details?id=com.myapp.USellUBuy&hl=en-US&ah=rkUao7oyUqUUQaIGFO2SJnkki1A&pli=1
+
+https://play.google.com/store/apps/details?id=com.myapp.USellUBuy&hl=en-US&ah=rkUao7oyUqUUQaIGFO2SJnkki1A&pli=1
 
 # Usell-Ubuy
 Mobile multi platform app focused on the purchase and sale of university resources among students.
